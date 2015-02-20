@@ -1,2 +1,2 @@
-# charon-chef
-C
+# charonfs-chef
+Cookbook for installing CharonFS

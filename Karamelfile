@@ -1,0 +1,6 @@
+dependencies: 
+  - recipe: charonfs::default
+    local:  
+      - charonfs::install
+    global:  
+      - hopshub::default
