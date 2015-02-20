@@ -1,0 +1,22 @@
+# Var definition
+CLIENT_ID=
+
+# Email definition
+email=
+# Charon flags configuration (true or false)
+client.id={CLIENT_ID}
+mount.point=
+main.memory.cache=false
+fsync.to.cloud=false
+debug.mode=true
+
+#address to listen for remote repository requests.
+addr=127.0.0.1:11000
+
+# Data locally stored location definition
+cache.directory=cache_{CLIENT_ID}
+local.repository.directory=cache_{CLIENT_ID}/privateRep
+remote.repository.directory=cache_{CLIENT_ID}/remote
+
+# Personal NameSpace id definition (if empty the system fill it with a random value when launched).
+personal.namespace.id=
