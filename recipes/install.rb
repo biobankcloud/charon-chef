@@ -103,8 +103,6 @@ template "#{node[:charon][:home]}/config/credentials.config" do
   mode 0655
 
 
-# run ./Charon_mount.sh script to mount Charon (maybe set to 777 mode)
-
 
 
 
