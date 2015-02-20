@@ -1,7 +1,7 @@
 driver.type=AMAZON-S3
 driver.id=cloud1
-accessKey=
-secretKey=
+accessKey=<%= node[:aws][:access_key] %>
+secretKey=<%= node[:aws][:secret_key] %>
 
 driver.type=GOOGLE-STORAGE
 driver.id=cloud2
