@@ -9,7 +9,7 @@ default=depsky{file:config/depsky.config}
 
 .cloud=cloud{
 driver.type=AMAZON-S3
-accessKey=
-secretKey=
+accessKey=<%= node[:aws][:access_key] %>
+secretKey=<%= node[:aws][:secret_key] %>
 location=EU_Ireland
 }

@@ -5,15 +5,15 @@ secretKey=<%= node[:aws][:secret_key] %>
 
 driver.type=GOOGLE-STORAGE
 driver.id=cloud2
-accessKey=
-secretKey=
+accessKey=<%= node[:google][:access_key] %>
+secretKey=<%= node[:google][:secret_key] %>
 
 driver.type=RACKSPACE
 driver.id=cloud3
-accessKey=
-secretKey=
+accessKey=<%= node[:rackspace][:access_key] %>
+secretKey=<%= node[:rackspace][:secret_key] %>
 
 driver.type=WINDOWS-AZURE
 driver.id=cloud4
-accessKey=
-secretKey=
+accessKey=<%= node[:azure][:access_key] %>
+secretKey=<%= node[:azure][:secret_key] %>
