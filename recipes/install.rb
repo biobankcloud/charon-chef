@@ -12,9 +12,9 @@ package 'tar' do
     options "--force-yes"
 end
 
-package 'openjdk-7-jre-headless' do
-    action :install
-end
+#package 'openjdk-7-jre-headless' do
+#    action :install
+#end
 
 apt_package 'fuse' do
     action :install

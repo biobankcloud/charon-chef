@@ -30,6 +30,11 @@ attribute "charon/email",
 :type => 'string',
 :required => "required"
 
+attribute "charon/mount_point”,
+:description => “The name for the mount point of Charon”,
+:type => 'string',
+:required => "required"
+
 attribute "aws/access_key",
 :description => "Aws access key",
 :type => 'string',

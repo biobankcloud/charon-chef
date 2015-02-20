@@ -5,7 +5,7 @@ CLIENT_ID=<%= @id %>
 email=<%= node[:charon][:email] %>
 # Charon flags configuration (true or false)
 client.id=<%= @id %>
-mount.point=
+mount.point=<%= node[:charon][:mount_point] %>
 main.memory.cache=false
 fsync.to.cloud=false
 debug.mode=<%= node[:charon][:debug] %>

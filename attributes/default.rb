@@ -6,6 +6,7 @@ default[:charon][:home]                    = "#{node[:charon][:dir]}/charon-#{no
 default[:charon][:logs_dir]                = "#{node[:charon][:home]}/logs"
 
 default[:charon][:email]                   = "tiago.m.o.89@gmail.com"
+default[:charon][:mount_point]             = "charon_fs"
 default[:charon][:download_url]            = "http://193.10.67.171/hops/charon-#{node[:charon][:version]}.tgz"
 
 default[:charon][:debug]                   = "false"
