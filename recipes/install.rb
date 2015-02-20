@@ -4,17 +4,21 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+node.default['java']['jdk_version'] = 7
+include_recipe "java"
 
-apt_package 'tar' do
+package 'tar' do
     action :install
+    options "--force-yes"
 end
 
-apt_package 'openjdk-7-jre-headless' do
+package 'openjdk-7-jre-headless' do
     action :install
 end
 
 apt_package 'fuse' do
     action :install
+    options "--force-yes"
 end
 
 # download charon
