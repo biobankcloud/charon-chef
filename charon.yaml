@@ -10,6 +10,6 @@ groups:
     attrs:
       charon:
         mount_point: charon_fs
-        email:  tiago.m.o.89@gmail.com
+        email: tiago.m.o.89@gmail.com
     recipes:
     - charon::default
