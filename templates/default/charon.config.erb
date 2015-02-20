@@ -1,22 +1,22 @@
 # Var definition
-CLIENT_ID=
+CLIENT_ID=<%= @id %>
 
 # Email definition
-email=
+email=<%= node[:charon][:email] %>
 # Charon flags configuration (true or false)
-client.id={CLIENT_ID}
+client.id=<%= @id %>
 mount.point=
 main.memory.cache=false
 fsync.to.cloud=false
-debug.mode=true
+debug.mode=<%= node[:charon][:debug] %>
 
 #address to listen for remote repository requests.
-addr=127.0.0.1:11000
+addr=<%= @my_ip %>:11000
 
 # Data locally stored location definition
-cache.directory=cache_{CLIENT_ID}
-local.repository.directory=cache_{CLIENT_ID}/privateRep
-remote.repository.directory=cache_{CLIENT_ID}/remote
+cache.directory=cache_<%= @id %>
+local.repository.directory=cache_<%= @id %>/privateRep
+remote.repository.directory=cache_<%= @id %>/remote
 
 # Personal NameSpace id definition (if empty the system fill it with a random value when launched).
 personal.namespace.id=

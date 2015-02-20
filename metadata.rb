@@ -25,3 +25,17 @@ attribute "charon/user",
 :type => 'string',
 :default => "glassfish"
 
+attribute "charon/email",
+:description => "Email address for Charon administrator",
+:type => 'string',
+:required => "required"
+
+attribute "aws/access_key",
+:description => "Aws access key",
+:type => 'string',
+:required => "required"
+
+attribute "aws/secret_key",
+:description => "Aws secret key",
+:type => 'string',
+:required => "required"
