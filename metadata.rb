@@ -30,8 +30,8 @@ attribute "charon/email",
 :type => 'string',
 :required => "required"
 
-attribute "charon/mount_point”,
-:description => “The name for the mount point of Charon”,
+attribute "charon/mount_point",
+:description => "The name for the mount point of Charon",
 :type => 'string',
 :required => "required"
 
@@ -45,32 +45,33 @@ attribute "aws/secret_key",
 :type => 'string',
 :required => "required"
 
-attribute "google/access_key",
-:description => "Google access key",
+attribute “google/access_key",
+:description => “Google access key",
 :type => 'string',
 :required => "required"
 
-attribute "google/secret_key",
-:description => "Google secret key",
+attribute “google/secret_key",
+:description => “Google secret key",
 :type => 'string',
 :required => "required"
 
-attribute "rackspace/access_key",
-:description => "RackSpace access key",
+attribute “rackspace/access_key",
+:description => “RackSpace access key",
 :type => 'string',
 :required => "required"
 
-attribute "rackspace/secret_key",
-:description => "RackSpace secret key",
+attribute “rackspace/secret_key",
+:description => “RackSpace secret key",
 :type => 'string',
 :required => "required"
 
-attribute "azure/access_key",
-:description => "Azure access key",
+attribute “azure/access_key",
+:description => “Azure access key",
 :type => 'string',
 :required => "required"
 
-attribute "azure/secret_key",
-:description => "Azure secret key",
+attribute “azure/secret_key",
+:description => “Azure secret key",
 :type => 'string',
 :required => "required"
+
