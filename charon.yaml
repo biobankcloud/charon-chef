@@ -7,9 +7,5 @@ cookbooks:
 groups:
   charonmaster:
     size: 1
-    attrs:
-      charon:
-        mount_point: charon_fs
-        email: tiago.m.o.89@gmail.com
     recipes:
     - charon::default
