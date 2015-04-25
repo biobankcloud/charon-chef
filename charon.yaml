@@ -5,8 +5,8 @@ ec2:
 
 cookbooks:
   charon:
-    github: â€œbiobankcloud/charon-chefâ€
-    branch: â€œmasterâ€
+    github: "biobankcloud/charon-chef"€
+    branch: "master"€
 
 groups:
   charonmaster:
