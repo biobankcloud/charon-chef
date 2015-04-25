@@ -37,11 +37,11 @@ remote_file cached_package_filename do
 end
 
 hin = "#{node[:charon][:home]}/.#{base_package_filename}_downloaded"
-base_name = File.basename(base_package_filename, ".tgz")
+base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
   user "root"
   code <<-EOH
-	tar -zxf #{cached_package_filename} -C #{node[:charon][:dir]}
+	tar -zcvf #{cached_package_filename} -C #{node[:charon][:dir]}
         chown -RL #{node[:hdfs][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
         rm -f #{node[:charon][:home]}/config/*.config
         # remove the config files that we would otherwise overwrite

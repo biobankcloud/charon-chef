@@ -1,8 +1,12 @@
 name: charon
+ec2:
+    type: m3.medium
+    region: eu-west-1
+
 cookbooks:
   charon:
-    github: biobankcloud/charon-chef
-    branch: master
+    github: “biobankcloud/charon-chef”
+    branch: “master”
 
 groups:
   charonmaster:
