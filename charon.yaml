@@ -7,7 +7,7 @@ cookbooks:
   charon:
     github: "biobankcloud/charon-chef"
     branch: "master"
-    
+
 groups:
   charonmaster:
     size: 1
