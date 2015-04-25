@@ -9,6 +9,16 @@ mount.point=<%= node[:charon][:mount_point] %>
 main.memory.cache=false
 fsync.to.cloud=false
 debug.mode=<%= node[:charon][:debug] %>
+prefetching=true
+compression=true
+
+times=false
+
+#number of threads configuration
+num.backgroud.threads=4
+num.prefetching.threads=4
+num.depsky.data.threads=4
+num.depsky.metadata.threads=4
 
 #address to listen for remote repository requests.
 addr=<%= @my_ip %>:11000
