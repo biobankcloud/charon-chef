@@ -101,3 +101,4 @@ template "#{node[:charon][:home]}/config/credentials.config" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
+end  
