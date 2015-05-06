@@ -21,7 +21,6 @@ apt_package 'fuse' do
     options "--force-yes"
 end
 
-
 package_url = node[:charon][:download_url]
 Chef::Log.info "Downloading charon binaries from #{package_url}"
 base_package_filename = File.basename(package_url)
@@ -42,7 +41,7 @@ bash 'extract-charon' do
   user "root"
   code <<-EOH
 	tar -zcvf #{cached_package_filename} -C #{node[:charon][:dir]}
-        chown -RL #{node[:hdfs][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
+ #       chown -RL #{node[:hdfs][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
         rm -f #{node[:charon][:home]}/config/*.config
         # remove the config files that we would otherwise overwrite
         touch #{hin}
@@ -54,16 +53,13 @@ link "#{node[:charon][:dir]}/charon" do
   to node[:charon][:home]
 end
 
-
-
-
-# bash "config_libjavafs" do
-#     user "root"
-#     cwd "/home/tiago/Documents/charon_chef/Charon"
-#     code <<-EOH
-#     sh configure_libjavafs.sh
-#     EOH
-# end
+bash "config_libjavafs" do
+  user "root"
+  cwd "#{node[:charon][:home]}"
+  code <<-EOH
+  sh configure_libjavafs.sh
+  EOH
+end
 
 libpath = File.expand_path '../../../kagent/libraries', __FILE__
 my_private_ip = my_private_ip()
@@ -102,3 +98,18 @@ template "#{node[:charon][:home]}/config/credentials.config" do
   group node[:charon][:group]
   mode 0655
 end  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
