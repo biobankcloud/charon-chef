@@ -41,7 +41,6 @@ bash 'extract-charon' do
   user "root"
   code <<-EOH
 	tar -zcvf #{cached_package_filename} -C #{node[:charon][:dir]}
- #       chown -RL #{node[:hdfs][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
         rm -f #{node[:charon][:home]}/config/*.config
         # remove the config files that we would otherwise overwrite
         touch #{hin}
