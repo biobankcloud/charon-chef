@@ -1,6 +1,6 @@
 default[:charon][:version]                 = "0.1.0"
-default[:charon][:user]                    = "glassfish"
-default[:charon][:group]                   = "glassfish"
+default[:charon][:user]                    = "root"
+default[:charon][:group]                   = "root"
 default[:charon][:dir]                     = "/srv"
 default[:charon][:home]                    = "#{node[:charon][:dir]}/charon-#{node[:charon][:version]}"
 default[:charon][:logs_dir]                = "#{node[:charon][:home]}/logs"
