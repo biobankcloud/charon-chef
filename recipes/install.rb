@@ -35,12 +35,14 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
-hin = "#{node[:charon][:home]}/.#{base_package_filename}_downloaded"
+#hin = "#{node[:charon][:home]}/.#{base_package_filename}_downloaded"
+hin = "#{node[:charon][:home]}/.charon_extracted_#{node[:charon][:version]}"
 base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
   user "root"
   code <<-EOH
-	tar -zcvf #{cached_package_filename} -C #{node[:charon][:dir]}
+	tar -xzf #{cached_package_filename} -C #{node[:charon][:dir]}
+	chown -RL #{node[:charon][:group]} #{node[:charon][:home]}
         rm -f #{node[:charon][:home]}/config/*.config
         # remove the config files that we would otherwise overwrite
         touch #{hin}
@@ -49,6 +51,8 @@ bash 'extract-charon' do
 end
 
 link "#{node[:charon][:dir]}/charon" do
+  owner node[:charon][:user]
+  group node[:charon][:group]
   to node[:charon][:home]
 end
 
@@ -96,8 +100,7 @@ template "#{node[:charon][:home]}/config/credentials.config" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
-end  
-
+end
 
 
 
