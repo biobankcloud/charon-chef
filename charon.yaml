@@ -1,6 +1,6 @@
 name: charon
 ec2:
-    type: t2.micro
+    type: m3.medium
     region: eu-west-1
 
 cookbooks:
