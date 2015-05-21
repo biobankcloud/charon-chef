@@ -1,5 +1,5 @@
 bash "run_Charon" do
-  user node[:charon][:user]
+  user "#{node[:charon][:user]}"
   #user "root"
   cwd "#{node[:charon][:home]}"
   code <<-EOH
