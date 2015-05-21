@@ -39,7 +39,7 @@ end
 hin = "#{node[:charon][:home]}/.charon_extracted_#{node[:charon][:version]}"
 base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
-  user "root"
+  user node[:charon][:user]
   code <<-EOH
 	tar -xzf #{cached_package_filename} -C #{node[:charon][:dir]}
 	chown -RL #{node[:charon][:group]} #{node[:charon][:home]}
@@ -57,7 +57,7 @@ link "#{node[:charon][:dir]}/charon" do
 end
 
 bash "config_libjavafs" do
-  user "root"
+  user node[:charon][:user]
   cwd "#{node[:charon][:home]}"
   code <<-EOH
   sh configure_libjavafs.sh
