@@ -102,6 +102,13 @@ template "#{node[:charon][:home]}/config/credentials.config" do
   mode 0655
 end
 
+bash "config_fuse_conf" do
+  user "root"
+  #cwd "#{node[:charon][:home]}"
+  code <<-EOH
+  perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
+  EOH
+end
 
 
 
