@@ -1,13 +1,13 @@
 default=depsky{file:config/depsky.config}
 
-.local=local
+local=local
 
 #.private=remote{addr:
 #4:127.0.0.1:11000
 #5:127.0.0.1:11001
 #}
 
-.cloud=cloud{
+cloud=cloud{
 driver.type=AMAZON-S3
 accessKey=<%= node[:aws][:access_key] %>
 secretKey=<%= node[:aws][:secret_key] %>
