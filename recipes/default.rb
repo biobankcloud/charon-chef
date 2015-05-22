@@ -1,5 +1,5 @@
-script "run_Charon" do
-  guard_interpreter :script
+bash "run_Charon" do
+  guard_interpreter :bash
   user "#{node[:charon][:user]}"
   group "#{node[:charon][:user]}"
   #user "root"
