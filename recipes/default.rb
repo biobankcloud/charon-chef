@@ -1,8 +1,10 @@
-bash "run_Charon" do
-  user "#{node[:charon][:user]}"
+script "run_Charon" do
+  user #{node[:charon][:user]}
+  group #{node[:charon][:user]}
   #user "root"
-  cwd "#{node[:charon][:home]}"
+  guard_interpreter :bash
+  cwd '#{node[:charon][:home]}'
   code <<-EOH
-  nohup sh Charon_mount_libs.sh > #{node[:charon][:logs_dir]} &
+  nohup ./Charon_mount_libs.sh > #{node[:charon][:logs_dir]} &
   EOH
 end
