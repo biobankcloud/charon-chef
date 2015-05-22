@@ -3,7 +3,7 @@ script "run_Charon" do
   group #{node[:charon][:user]}
   #user "root"
   guard_interpreter :script
-  cwd '#{node[:charon][:home]}'
+  cwd #{node[:charon][:home]}
   code <<-EOH
   nohup ./Charon_mount_libs.sh > #{node[:charon][:logs_dir]} &
   EOH
