@@ -16,17 +16,6 @@ depends 'kagent'
   supports os
 end
 
-attribute "charon/version",
-:description => "Charon version number",
-:type => 'string'
-:required => "required"
-
-attribute "charon/user",
-:display_name => "Name of the Charon user",
-:description => "Name of the Charon user",
-:type => 'string',
-:required => "required"
-
 attribute "charon/email",
 :description => "Email address for Charon administrator",
 :type => 'string',
@@ -74,6 +63,17 @@ attribute "azure/access_key",
 
 attribute "azure/secret_key",
 :description => "Azure secret key",
+:type => 'string',
+:required => "required"
+
+attribute "charon/version",
+:description => "Charon version number",
+:type => 'string'
+:required => "required"
+
+attribute "charon/user",
+:display_name => "Name of the Charon user",
+:description => "Name of the Charon user",
 :type => 'string',
 :required => "required"
 
