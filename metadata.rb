@@ -19,13 +19,12 @@ end
 attribute "charon/version",
 :description => "Charon version number",
 :type => 'string'
-:default => "0.1.0"
 :required => "required"
 
 attribute "charon/user",
-:description => "Username to run Charon as",
+:display_name => "Name of the Charon user",
+:description => "Name of the Charon user",
 :type => 'string',
-:default => "ubuntu"
 :required => "required"
 
 attribute "charon/email",
