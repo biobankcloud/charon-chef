@@ -12,7 +12,6 @@ user node[:charon][:user] do
   supports :manage_home => true
   action :create
   home "/home/#{node[:charon][:user]}"
-  password 'reverse'
   system true
   shell "/bin/bash"
   not_if "getent passwd #{node[:charon]['user']}"
