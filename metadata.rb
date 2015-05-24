@@ -19,7 +19,7 @@ end
 attribute "charon/version",
 :display_name => "Charon version number",
 :description => "Charon version number",
-:type => 'string'
+:type => 'string',
 :required => "required"
 
 attribute "charon/user",
