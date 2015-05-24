@@ -16,6 +16,12 @@ depends 'kagent'
   supports os
 end
 
+attribute "charon/user",
+:display_name => "Name of the Charon user",
+:description => "Name of the Charon user",
+:type => 'string',
+:required => "required"
+
 attribute "charon/email",
 :description => "Email address for Charon administrator",
 :type => 'string',
