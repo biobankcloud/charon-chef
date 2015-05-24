@@ -23,13 +23,13 @@ attribute "charon/version",
 :required => "required"
 
 attribute "charon/user",
-:display_name => "Name of the Charon user",
-:description => "Name of the Charon user",
+:display_name => "Username to run Charon as",
+:description => "Username to run Charon as",
 :type => 'string',
 :required => "required"
 
 attribute "charon/mount_point",
-:description => "The name for the mount point of Charon",
+:description => "The name of the mount point of Charon",
 :type => 'string',
 :required => "required"
 

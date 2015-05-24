@@ -4,6 +4,19 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+group node[:charon][:group] do
+  action :create
+end
+
+user node[:charon][:user] do
+  supports :manage_home => true
+  action :create
+  home "/home/#{node[:charon][:user]}"
+  system true
+  shell "/bin/bash"
+  not_if "getent passwd #{node[:charon]['user']}"
+end
+
 node.default['java']['jdk_version'] = 7
 include_recipe "java"
 
