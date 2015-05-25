@@ -14,6 +14,7 @@ user node[:charon][:user] do
   home "/home/#{node[:charon][:user]}"
   #system true
   shell "/bin/bash"
+  action [ :create, :unlock ]
   not_if "getent passwd #{node[:charon]['user']}"
 end
 
