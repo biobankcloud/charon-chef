@@ -12,7 +12,7 @@ user node[:charon][:user] do
   supports :manage_home => true
   action :create
   home "/home/#{node[:charon][:user]}"
-  system true
+  #system true
   shell "/bin/bash"
   not_if "getent passwd #{node[:charon]['user']}"
 end
@@ -124,13 +124,6 @@ bash "config_fuse_conf" do
   EOH
 end
 
-#bash "config_public_ip" do
- # user "root"
- # #cwd "#{node[:charon][:home]}"
- # code <<-EOH
- # wget -qO- http://instance-data/latest/meta-data/public-ipv4 
- # EOH
-#end
 
 
 
