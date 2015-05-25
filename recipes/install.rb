@@ -12,9 +12,9 @@ user node[:charon][:user] do
   supports :manage_home => true
   action :create
   home "/home/#{node[:charon][:user]}"
-  #system true
+  system true
   shell "/bin/bash"
-  action [ :create, :unlock ]
+  #action [ :create, :unlock ]
   not_if "getent passwd #{node[:charon]['user']}"
 end
 
