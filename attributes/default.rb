@@ -10,12 +10,15 @@ default[:charon][:mount_point]             = "charon_fs"
 default[:charon][:download_url]            = "https://dl.dropboxusercontent.com/u/2933066/charon-#{node[:charon][:version]}.tar.gz"
 
 default[:charon][:debug]                   = "false"
+default[:charon][:public_ip]                 = ""
 
 default[:aws][:access_key]                 = ""
 default[:aws][:secret_key]                 = ""
+default[:aws][:cannonical_id]                 = ""
 
 default[:google][:access_key]              = ""
 default[:google][:secret_key]              = ""
+default[:google][:email]                      = ""
 
 default[:rackspace][:access_key]           = ""
 default[:rackspace][:secret_key]           = ""

@@ -70,7 +70,8 @@ link "#{node[:charon][:dir]}/charon" do
 end
 
 bash "config_libjavafs" do
-  user node[:charon][:user]
+  user "#{node[:charon][:user]}"
+  group "#{node[:charon][:user]}"
   cwd "#{node[:charon][:home]}"
   code <<-EOH
   sh configure_libjavafs.sh
@@ -89,7 +90,7 @@ template "#{node[:charon][:home]}/config/charon.config" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
-  variables({ :my_ip => my_private_ip ,
+  variables({ :my_ip => my_public_ip ,
               :id => random_id
            })
 end
@@ -122,6 +123,14 @@ bash "config_fuse_conf" do
   perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
   EOH
 end
+
+#bash "config_public_ip" do
+ # user "root"
+ # #cwd "#{node[:charon][:home]}"
+ # code <<-EOH
+ # wget -qO- http://instance-data/latest/meta-data/public-ipv4 
+ # EOH
+#end
 
 
 

@@ -48,6 +48,11 @@ attribute "aws/secret_key",
 :type => 'string',
 :required => "required"
 
+attribute "aws/cannonical_id",
+:description => "Aws cannonical id",
+:type => 'string',
+:required => "required"
+
 attribute "google/access_key",
 :description => "Google access key",
 :type => 'string',
@@ -55,6 +60,11 @@ attribute "google/access_key",
 
 attribute "google/secret_key",
 :description => "Google secret key",
+:type => 'string',
+:required => "required"
+
+attribute "google/email",
+:description => "Google email",
 :type => 'string',
 :required => "required"
 
