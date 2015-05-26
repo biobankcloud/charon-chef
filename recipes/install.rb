@@ -4,6 +4,16 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+
+#bash "gen_key" do
+ # user "#{node[:charon][:user]}"
+ # group "#{node[:charon][:user]}"
+ # cwd "#{node[:charon][:home]}"
+ # code <<-EOH
+ # openssl passwd -1 "theplaintextpassword"
+#  EOH
+#end
+
 group node[:charon][:group] do
   action :create
 end
@@ -16,6 +26,12 @@ user node[:charon][:user] do
   shell "/bin/bash"
   #action [ :create, :unlock ]
   not_if "getent passwd #{node[:charon]['user']}"
+end
+
+group node[:charon][:group] do
+  action :modify
+  members node[:charon][:user] 
+  append true
 end
 
 node.default['java']['jdk_version'] = 7
