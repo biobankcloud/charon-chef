@@ -1,11 +1,17 @@
 # Var definition
 CLIENT_ID=<%= @id %>
 
-# Email definition
-email=<%= node[:charon][:email] %>
-# Charon flags configuration (true or false)
+# Charon basics
 client.id=<%= @id %>
 mount.point=<%= node[:charon][:mount_point] %>
+
+# Email definition
+email=<%= node[:charon][:email] %>
+
+#address to listen for remote repository requests.
+addr=<%= @my_ip %>:11000
+
+# Charon flags configuration (true or false)
 main.memory.cache=false
 fsync.to.cloud=false
 debug.mode=<%= node[:charon][:debug] %>
@@ -17,16 +23,12 @@ times=false
 #number of threads configuration
 num.backgroud.threads=4
 num.prefetching.threads=4
-num.depsky.data.threads=4
+num.depsky.data.threads=12
 num.depsky.metadata.threads=4
-
-#address to listen for remote repository requests.
-addr=<%= @my_ip %>:11000
 
 # Data locally stored location definition
 cache.directory=cache_<%= @id %>
-local.repository.directory=cache_<%= @id %>/privateRep
-remote.repository.directory=cache_<%= @id %>/remote
+remote.repository.directory=localRep_<%= @id %>/remote
 
 # Personal NameSpace id definition (if empty the system fill it with a random value when launched).
 personal.namespace.id=

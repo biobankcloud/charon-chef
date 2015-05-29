@@ -14,7 +14,7 @@ bash "gen_key" do
   EOH
 end
 
- key=IO.readlines("/home/ubuntu/file").first
+ key=IO.readlines("#{node['charon']['keyfile']}").first
 
 
 group node[:charon][:group] do
@@ -77,7 +77,11 @@ bash 'extract-charon' do
   code <<-EOH
 	tar -xzf #{cached_package_filename} -C #{node[:charon][:dir]}
 	chown -RL #{node[:charon][:group]} #{node[:charon][:home]}
-        rm -f #{node[:charon][:home]}/config/*.config
+        rm -f #{node[:charon][:home]}/config/charon.config
+        rm -f #{node[:charon][:home]}/config/depsky.config
+        rm -f #{node[:charon][:home]}/config/hopsfsRep.config
+        rm -f #{node[:charon][:home]}/config/singleCloud.config
+        rm -f #{node[:charon][:home]}/config/*.charon
         # remove the config files that we would otherwise overwrite
         touch #{hin}
 	EOH
@@ -123,15 +127,34 @@ template "#{node[:charon][:home]}/config/depsky.config" do
   mode 0655
 end
 
-template "#{node[:charon][:home]}/config/locations.config" do
-  source "locations.config.erb"
+template "#{node[:charon][:home]}/config/singleCloud.config" do
+  source "singleCloud.config.erb"
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
 end
 
-template "#{node[:charon][:home]}/config/credentials.config" do
-  source "credentials.config.erb"
+template "#{node[:charon][:home]}/config/site-id.charon" do
+  source "site-id.charon.erb"
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode 0655
+  variables({ :my_ip => my_public_ip ,
+            :id => random_id
+         })
+end
+
+template "#{node[:charon][:home]}/config/credentials.charon" do
+  source "credentials.charon.erb"
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode 0655
+    variables({ :id => random_id
+         })
+end
+
+template "#{node[:charon][:home]}/config/hopsfsRep.config" do
+  source "hopsfsRep.config.erb"
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655

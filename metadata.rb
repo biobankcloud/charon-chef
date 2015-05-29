@@ -94,3 +94,15 @@ attribute "azure/secret_key",
 :type => 'string',
 :required => "required"
 
+attribute "hdfs/folder",
+:description => "Azure secret key",
+:type => 'string'
+
+attribute "hdfs/ip",
+:description => "Azure secret key",
+:type => 'string'
+
+attribute "hdfs/port",
+:description => "Azure secret key",
+:type => 'string'
+

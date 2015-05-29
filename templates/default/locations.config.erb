@@ -1,15 +1,12 @@
-default=depsky{file:config/depsky.config}
+# define the label used to choose the corresponding file locations in the system. 
+# You can use Variables defined in charon.config file
 
-local=local
+default=coc{file:config/depsky.config}
 
-#.private=remote{addr:
-#4:127.0.0.1:11000
-#5:127.0.0.1:11001
-#}
+cloud=cloud{file:config/singleCloud.config}
 
-cloud=cloud{
-driver.type=AMAZON-S3
-accessKey=<%= node[:aws][:access_key] %>
-secretKey=<%= node[:aws][:secret_key] %>
-location=EU_Ireland
-}
+local=privateRep{cache_{CLIENT_ID}/privateRep}
+
+external=externalRep{file:config/hopsfsRep.config}
+
+
