@@ -28,6 +28,12 @@ attribute "charon/user",
 :type => 'string',
 :required => "required"
 
+attribute "charon/user/password",
+:display_name => "User password",
+:description => "User password",
+:type => 'string',
+:required => "required"
+
 attribute "charon/mount_point",
 :description => "The name of the mount point of Charon",
 :type => 'string',

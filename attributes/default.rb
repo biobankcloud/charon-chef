@@ -1,6 +1,6 @@
 default[:charon][:version]                 = "0.1.0"
 default[:charon][:user]                    = "ubuntu"
-default[:charon][:password]            = "putyouruserpasswordhere"
+default[:charon][:user][:password]            = "putyouruserpasswordhere"
 default[:charon][:group]                   = "ubuntu"
 default[:charon][:dir]                     = "/home/#{node[:charon][:user]}"
 default[:charon][:home]                    = "#{node[:charon][:dir]}/Charon"
