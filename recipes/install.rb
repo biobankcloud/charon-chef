@@ -6,15 +6,15 @@
 
 
 bash "gen_key" do
-  user "#{node[:charon][:user]}"
-  group "#{node[:charon][:user]}"
-  cwd "#{node[:charon][:home]}"
+  user "root"
+  group "root"
+  cwd "/home/Ubuntu"
   code <<-EOH
   openssl passwd -1 #{node[:charon][:password]} > file
   EOH
 end
 
- key=IO.readlines("#{node[:charon][:home]}/file").first
+ key=IO.readlines("/home/Ubuntu/file").first
 
 
 group node[:charon][:group] do
