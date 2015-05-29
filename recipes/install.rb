@@ -8,13 +8,13 @@
 bash "gen_key" do
   user "root"
   group "root"
-  cwd "/home/Ubuntu"
+  cwd "/home/ubuntu"
   code <<-EOH
   openssl passwd -1 #{node[:charon][:password]} > file
   EOH
 end
 
- key=IO.readlines("/home/Ubuntu/file").first
+ key=IO.readlines("/home/ubuntu/file").first
 
 
 group node[:charon][:group] do
