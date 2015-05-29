@@ -28,7 +28,7 @@ attribute "charon/user",
 :type => 'string',
 :required => "required"
 
-attribute "charon/user/password",
+attribute "charon/password",
 :display_name => "User password",
 :description => "User password",
 :type => 'string',
