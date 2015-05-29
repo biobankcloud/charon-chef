@@ -5,14 +5,17 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 
-#bash "gen_key" do
- # user "#{node[:charon][:user]}"
- # group "#{node[:charon][:user]}"
- # cwd "#{node[:charon][:home]}"
- # code <<-EOH
- # openssl passwd -1 "theplaintextpassword"
-#  EOH
-#end
+bash "gen_key" do
+  user "#{node[:charon][:user]}"
+  group "#{node[:charon][:user]}"
+  cwd "#{node[:charon][:home]}"
+  code <<-EOH
+  openssl passwd -1 #{node[:charon][:password]} > file
+  EOH
+end
+
+ key=IO.readlines("#{node[:charon][:home]}/.file").first
+
 
 group node[:charon][:group] do
   action :create
@@ -20,10 +23,11 @@ end
 
 user node[:charon][:user] do
   supports :manage_home => true
-  action :create
+  password key
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
+  action :create
   #action [ :create, :unlock ]
   not_if "getent passwd #{node[:charon]['user']}"
 end
