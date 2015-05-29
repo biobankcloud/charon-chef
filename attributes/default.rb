@@ -13,7 +13,7 @@ default[:charon][:download_url]            = "https://dl.dropboxusercontent.com/
 default[:charon][:debug]                   = "false"
 default[:charon][:public_ip]                 = ""
 
-
+default[:charon][:keyfile]                   = "keyfile"
 
 default[:aws][:access_key]                 = ""
 default[:aws][:secret_key]                 = ""

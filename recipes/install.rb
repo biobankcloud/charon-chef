@@ -10,7 +10,7 @@ bash "gen_key" do
   group "root"
   cwd "/home/ubuntu"
   code <<-EOH
-  openssl passwd -1 #{node[:charon][:password]} > file
+  openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
   EOH
 end
 
