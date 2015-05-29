@@ -14,7 +14,7 @@ bash "gen_key" do
   EOH
 end
 
- key=IO.readlines("#{node[:charon][:home]}/.file").first
+ key=IO.readlines("#{node[:charon][:home]}/file").first
 
 
 group node[:charon][:group] do
