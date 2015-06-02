@@ -4,7 +4,8 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-file "#{node[:charon][:keyfile]}" do
+#file "#{node[:charon][:keyfile]}" do
+file "/home/ubuntu/keyfile" do
   owner 'root'
   group 'root'
   mode '0755'
@@ -16,11 +17,13 @@ bash "gen_key" do
   group "root"
   cwd "/home/ubuntu"
   code <<-EOH
-  openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
+ # openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
+ openssl passwd -1 #{node[:charon][:password]} > keyfile
   EOH
 end
 
- key=IO.readlines("#{node['charon']['keyfile']}").first
+ #key=IO.readlines("#{node['charon']['keyfile']}").first
+ key=IO.readlines("/home/ubuntu/keyfile").first
 
 
 group node[:charon][:group] do
