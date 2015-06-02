@@ -1,0 +1,17 @@
+# ============= PEER 5 ===========================
+id=<%= @id %>
+email=<%= node[:charon][:email] %>
+addr=<%= @my_ip %>:11000
+
+driver.type=AMAZON-S3
+canonicalId=<%= node[:aws][:cannonical_id] %>
+
+driver.type=GOOGLE-STORAGE
+canonicalId=<%= node[:google][:email] %>
+
+driver.type=RACKSPACE
+canonicalId=<%= node[:charon][:user] %>,<%= node[:google][:email] %>
+
+driver.type=WINDOWS-AZURE
+canonicalId=
+# ================================================
