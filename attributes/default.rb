@@ -33,8 +33,8 @@ default[:charon][:public_ips]              = ['10.0.2.15']
 default[:charon][:private_ips]             = ['10.0.2.15']
 
 default[:hdfs][:folder]               = "charon-rep"
-default[:hdfs][:ip]               = "localhost
-default[:hdfs][:port]               = "9000"
+default[:hdfs][:ip]               = "localhost"
+default[:hdfs][:port]               = 9000
 
 default[:hadoop][:yarn][:user]             = "yarn"
 default[:hadoop][:yarn][:nm][:memory_mbs]  = 3584
