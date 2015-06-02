@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-file #{node[:charon][:keyfile]} do
+file "#{node[:charon][:keyfile]}" do
   owner 'root'
   group 'root'
   mode '0755'
