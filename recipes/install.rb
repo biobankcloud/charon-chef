@@ -6,9 +6,9 @@
 
 #file "#{node[:charon][:keyfile]}" do
 file "keyfile" do
-  owner root
-  group root
-  mode 0755
+  owner "root"
+  group "root"
+  mode "0755"
   path "/home/ubuntu/keyfile"
   action :create
 end
