@@ -4,6 +4,12 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+file #{node[:charon][:keyfile]} do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
 
 bash "gen_key" do
   user "root"
@@ -75,7 +81,7 @@ base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
   user node[:charon][:user]
   code <<-EOH
-	tar -xzf #{cached_package_filename} -C #{node[:charon][:dir]}
+	tar -zxzf #{cached_package_filename} -C #{node[:charon][:dir]}
 	chown -RL #{node[:charon][:group]} #{node[:charon][:home]}
         rm -f #{node[:charon][:home]}/config/charon.config
         rm -f #{node[:charon][:home]}/config/depsky.config
