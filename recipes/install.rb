@@ -19,12 +19,12 @@ bash "gen_key" do
   cwd "/tmp"
   code <<-EOH
  # openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
- openssl passwd -1 #{node[:charon][:password]} > keyfile
+   openssl passwd -1 #{node[:charon][:password]} > keyfile
   EOH
 end
 
  #key=IO.readlines("#{node['charon']['keyfile']}").first
- #key=IO.readlines("/keyfile").first
+ key=IO.readlines("/tmp/keyfile").first
 
 
 group node[:charon][:group] do
@@ -33,7 +33,7 @@ end
 
 user node[:charon][:user] do
   supports :manage_home => true
-  #password key
+  password key
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
