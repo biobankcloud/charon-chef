@@ -10,7 +10,7 @@ file "/tmp/keyfile" do
   group 'root'
   mode '0755'
  # path "/home/ubuntu/keyfile"
-  action :create
+  action :touch
 end
 
 #bash "gen_key" do
