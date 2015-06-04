@@ -5,11 +5,11 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 #file "#{node[:charon][:keyfile]}" do
-file "/home/keyfile" do
+file "/tmp/keyfile" do
   owner 'root'
   group 'root'
   mode '0755'
- # path "/home/keyfile"
+ # path "/home/ubuntu/keyfile"
   action :create
 end
 
