@@ -23,16 +23,8 @@ bash "gen_key" do
   EOH
 end
 
-remote_file "Copy file" do
-  path "/tmp/keyfilee"
-  source "/tmp/keyfile"
-  owner 'root'
-  group 'root'
-  mode 0755
-end
-
  #key=IO.readlines("#{node['charon']['keyfile']}").first
- key=IO.readlines("/tmp/keyfilee").first
+ #key=IO.readlines("/tmp/keyfilee").first
 
 
 group node[:charon][:group] do
@@ -41,7 +33,8 @@ end
 
 user node[:charon][:user] do
   supports :manage_home => true
-  password key
+  #password key
+  password ::File.open("/tmp/keyfile").read
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
