@@ -23,8 +23,16 @@ bash "gen_key" do
   EOH
 end
 
+remote_file "Copy file" do
+  path "/tmp/keyfilee"
+  source "/tmp/keyfile"
+  owner 'root'
+  group 'root'
+  mode 0755
+end
+
  #key=IO.readlines("#{node['charon']['keyfile']}").first
- key=IO.readlines("/tmp/keyfile").first
+ key=IO.readlines("/tmp/keyfilee").first
 
 
 group node[:charon][:group] do
