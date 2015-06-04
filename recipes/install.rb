@@ -33,7 +33,7 @@ end
 
 user node[:charon][:user] do
   supports :manage_home => true
-  password key
+  #password key
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
