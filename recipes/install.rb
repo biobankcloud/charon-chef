@@ -13,15 +13,15 @@ file "/tmp/keyfile" do
   action :touch
 end
 
-#bash "gen_key" do
- # user "root"
- # group "root"
-  #cwd "/home/ubuntu"
+bash "gen_key" do
+  user "root"
+  group "root"
+  cwd "/tmp"
   #code <<-EOH
  # openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
-# openssl passwd -1 #{node[:charon][:password]} > keyfile
- # EOH
-#end
+ openssl passwd -1 #{node[:charon][:password]} > keyfile
+  EOH
+end
 
  #key=IO.readlines("#{node['charon']['keyfile']}").first
  #key=IO.readlines("/keyfile").first
