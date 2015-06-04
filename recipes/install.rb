@@ -9,14 +9,14 @@ file "keyfile" do
   owner "root"
   group "root"
   mode "0755"
-  path "/home/ubuntu/keyfile"
+  path "/keyfile"
   action :create
 end
 
 bash "gen_key" do
   user "root"
   group "root"
-  cwd "/home/ubuntu"
+  #cwd "/home/ubuntu"
   code <<-EOH
  # openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
  openssl passwd -1 #{node[:charon][:password]} > keyfile
@@ -24,7 +24,7 @@ bash "gen_key" do
 end
 
  #key=IO.readlines("#{node['charon']['keyfile']}").first
- key=IO.readlines("/home/ubuntu/keyfile").first
+ key=IO.readlines("/keyfile").first
 
 
 group node[:charon][:group] do
