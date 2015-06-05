@@ -4,6 +4,6 @@ bash "run_Charon" do
   group "#{node[:charon][:user]}"
   cwd "#{node[:charon][:home]}"
   code <<-EOH
-  nohup ./Charon_mount_libs.sh > #{node[:charon][:logs_dir]} &
+  nohup ./Charon_mount.sh > #{node[:charon][:logs_dir]} &
   EOH
 end
