@@ -35,7 +35,7 @@ user node[:charon][:user] do
   supports :manage_home => true
   #password key
   #password lazy ::File.open("/tmp/keyfile").read
-  password lazy { ::File.open("/tmp/keyfile").read }
+  password lazy { ::File.open("/tmp/keyfile").read.gsub("\n","") }
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
