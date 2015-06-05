@@ -176,17 +176,3 @@ bash "config_fuse_conf" do
   perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
   EOH
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -105,4 +105,3 @@ attribute "hdfs/ip",
 attribute "hdfs/port",
 :description => "Azure secret key",
 :type => 'string'
-
