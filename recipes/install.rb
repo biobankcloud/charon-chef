@@ -18,7 +18,6 @@ bash "gen_key" do
   group "root"
   cwd "/tmp"
   code <<-EOH
- # openssl passwd -1 #{node[:charon][:password]} > #{node[:charon][:keyfile]}
    openssl passwd -1 #{node[:charon][:password]} > keyfile
   EOH
 end
@@ -33,8 +32,6 @@ end
 
 user node[:charon][:user] do
   supports :manage_home => true
-  #password key
-  #password lazy ::File.open("/tmp/keyfile").read
   password lazy { ::File.open("/tmp/keyfile").read.gsub("\n","") }
   home "/home/#{node[:charon][:user]}"
   system true
@@ -100,11 +97,11 @@ bash 'extract-charon' do
   not_if { ::File.exist?("#{hin}") }
 end
 
-link "#{node[:charon][:dir]}/charon" do
-  owner node[:charon][:user]
-  group node[:charon][:group]
-  to node[:charon][:home]
-end
+#link "#{node[:charon][:dir]}/charon" do
+ # owner node[:charon][:user]
+ # group node[:charon][:group]
+ # to node[:charon][:home]
+#end
 
 bash "config_libjavafs" do
   user "#{node[:charon][:user]}"
