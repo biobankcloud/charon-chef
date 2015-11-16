@@ -49,7 +49,7 @@ directory node[:charon][:dir] do
   mode "0774"
   recursive true
   action :create
-  not_if { File.directory?("#{node[:charon][:dir]}") }
+#  not_if { File.directory?("#{node[:charon][:dir]}") }
 end
 
 node.default['java']['jdk_version'] = 7

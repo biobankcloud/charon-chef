@@ -89,6 +89,7 @@ hin = "#{node[:charon][:home]}/.charon_extracted_#{node[:charon][:version]}"
 base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
   user node[:charon][:user]
+  group node[:charon][:group]
   code <<-EOH
 	tar -zxzf #{cached_package_filename} -C #{node[:charon][:dir]}
 	chown -RL #{node[:charon][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
