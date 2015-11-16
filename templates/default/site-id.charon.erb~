@@ -1,6 +1,6 @@
 # ============= PEER 5 ===========================
 id=<%= @id %>
-email=<%= node[:charon][:user_email] %>
+email=<%= node[:charon][:email] %>
 addr=<%= @my_ip %>:11000
 
 driver.type=AMAZON-S3

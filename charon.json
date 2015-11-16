@@ -1,0 +1,34 @@
+{ 
+  "charon": {
+     "user": "",
+     "group": "", 
+     "user_email": ""    
+  }, 
+  "aws": {
+     "access_key": "",
+     "secret_key": "",
+     "cannonical_id": ""	 
+  },
+  "google": {
+     "access_key": "",
+     "secret_key": "",
+     "email": ""	 
+  },
+  "rackspace": {
+     "access_key": "",
+     "secret_key": ""	 
+  },
+  "azure": {
+     "access_key": "",
+     "secret_key": ""	 
+  },
+  "hdfs": {
+     "conf_dir" : "/srv/hadoop/etc/hadoop"
+  },
+  "private_ips": ["127.0.0.1"],
+  "public_ips": ["127.0.0.1"],
+  "run_list": [ 
+    "recipe[charon::install]",
+    "recipe[charon::default]"
+  ]
+}

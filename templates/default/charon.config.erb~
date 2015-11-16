@@ -6,7 +6,7 @@ client.id=<%= @id %>
 mount.point=<%= node[:charon][:mount_point] %>
 
 # Email definition
-email=<%= node[:charon][:user_email] %>
+email=<%= node[:charon][:email] %>
 
 #address to listen for remote repository requests.
 addr=<%= @my_ip %>:11000
