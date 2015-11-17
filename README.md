@@ -4,20 +4,19 @@ This cookbook automates the installation of Charon, a cloud-of-clouds backed fil
 
 **1 - First you should install Chef and git:**
 
-```$ wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb
-
+```
+$ wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb
 $ sudo dpkg -i chefdk_0.7.0-1_amd64.deb
-
 $ sudo apt-get install git
-
-$ git config --global url."https://".insteadOf git://```
+$ git config --global url."https://".insteadOf git://
+```
 
 **2 - To test if Chef and git was well installed run:**
-
-* chef-solo --version
-* berks --version
-* git --version
-
+```
+$ chef-solo --version
+$ berks --version
+$ git --version
+```
 **3 - After that, you must create the clouds accounts and get the API credentials before installing and running Charon:**
 
 For create the accounts follow the links bellow:
@@ -37,10 +36,11 @@ After creating the accounts you'll have to find your API credentials. Follow the
 * To find Windows Azure keys go to the windows azure portal. First you need to create a new storage project. After select this new project, at the bottom of the page, you can find the key management. In this case your access key is your storage project name and you secret key is the primary key in the key management.
 
 **4 - Now that all the accounts are created is time to intall and run Charon:**
-
-* git clone https://github.com/biobankcloud/charon-chef.git
-* cd charon-chef
-* berks vendor /tmp/cookbooks
+´´´
+$ git clone https://github.com/biobankcloud/charon-chef.git
+$ cd charon-chef
+$ berks vendor /tmp/cookbooks
+´´´
 * Fill up the charon.json file:
   * the 'user' and 'group' should be fill with the result of the command 'echo $USER'
   * the 'user_email' should be the user email
