@@ -57,12 +57,12 @@ $ sudo chef-solo -c solo.rb -j charon.json
 **5 - Stop and re-runing Charon:**
 
 * To umount the Charon file system run:
-  ```
-  $ cd /srv/Charon
-  $ ./Charon_umount.sh charon_fs
-  ```
+```
+$ cd /srv/Charon
+$ ./Charon_umount.sh charon_fs
+```
 * To re-run Charon:
-  ```
-  $ cd /srv/Charon
-  $ nohup ./Charon_mount.sh > /srv/Charon/logs &
-  ```
+```
+$ cd /srv/Charon
+$ nohup ./Charon_mount.sh > /srv/Charon/logs &
+```
