@@ -9,7 +9,7 @@ default[:charon][:user_email]              = "tiago.m.o.89@gmail.com"
 default[:charon][:mount_point]             = "#{node[:charon][:dir]}/charon_fs"
 default[:charon][:download_url]            = "https://dl.dropboxusercontent.com/u/2933066/charon-#{node[:charon][:version]}.tar.gz"
 
-default[:charon][:debug]                   = "false"
+default[:charon][:debug]                   = "true"
 default[:charon][:public_ip]               = ['10.0.2.15']
 
 default[:aws][:access_key]                 = ""
