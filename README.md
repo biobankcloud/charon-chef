@@ -36,11 +36,12 @@ After creating the accounts you'll have to find your API credentials. Follow the
 * To find Windows Azure keys go to the windows azure portal. First you need to create a new storage project. After select this new project, at the bottom of the page, you can find the key management. In this case your access key is your storage project name and you secret key is the primary key in the key management.
 
 **4 - Now that all the accounts are created is time to intall and run Charon:**
-´´´
+
+```
 $ git clone https://github.com/biobankcloud/charon-chef.git
 $ cd charon-chef
 $ berks vendor /tmp/cookbooks
-´´´
+```
 * Fill up the charon.json file:
   * the 'user' and 'group' should be fill with the result of the command 'echo $USER'
   * the 'user_email' should be the user email
@@ -48,14 +49,20 @@ $ berks vendor /tmp/cookbooks
   * the 'cannonical_id' attribute under the 'aws' provider can be found in the Security Credentials page of your AWS Management Console.
   * the 'email' attribute under the 'google' provider should be the google email associated to your google cloud storage account.
   * the 'conf_dir' attribute of 'hdfs' sould indicate the path to the folder containing the hdfs configurations files (ex: core-site.xml) 
-* sudo chef-solo -c solo.rb -j charon.json
+```
+$ sudo chef-solo -c solo.rb -j charon.json
+```
 * Charon will be mounted at '/srv/charon_fs'. Just use it as the local file system.
 
 **5 - Stop and re-runing Charon:**
 
 * To umount the Charon file system run:
-  * cd /srv/Charon
-  * ./Charon_umount.sh charon_fs
+  ```
+  $ cd /srv/Charon
+  $ ./Charon_umount.sh charon_fs
+  ```
 * To re-run Charon:
-  * cd /srv/Charon
-  * nohup ./Charon_mount.sh > /srv/Charon/logs &
+  ```
+  $ cd /srv/Charon
+  $ nohup ./Charon_mount.sh > /srv/Charon/logs &
+  ```
