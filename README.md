@@ -24,7 +24,6 @@ This cookbook automates the installation of Charon, a cloud-of-clouds backed fil
 * git clone https://github.com/biobankcloud/charon-chef.git
 * cd charon-chef
 * berks vendor /tmp/cookbooks
-
 * Fill up the charon.json file:
   * the 'user' and 'group' should be fill with the result of the command 'echo $USER'
   * the 'user_email' should be the user email
