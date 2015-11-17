@@ -4,7 +4,7 @@ This cookbook automates the installation of Charon, a cloud-of-clouds backed fil
 
 -> First you should install Chef and git:
 
-1- wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb
+1- wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb\n
 2- sudo dpkg -i chefdk_0.7.0-1_amd64.deb
 3- sudo apt-get install git
 4- git config --global url."https://".insteadOf git://
