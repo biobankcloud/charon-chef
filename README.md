@@ -17,7 +17,7 @@ This cookbook automates the installation of Charon, a cloud-of-clouds backed fil
 
 **3 - After that, you must create the clouds accounts and get the API credentials before installing and running Charon:**
 
-* Go to the [DepSKy](http://cloud-of-clouds.github.io/depsky/ )web page and follow the steps in the 'Getting Started with DepSky' section to find the credentials.
+* Go to the [DepSKy](http://cloud-of-clouds.github.io/depsky/ ) web page and follow the steps in the 'Getting Started with DepSky' section to find the credentials.
 
 **4 - Now that all the accounts are created is time to intall and run Charon:**
 
