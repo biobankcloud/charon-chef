@@ -52,14 +52,14 @@ $ berks vendor /tmp/cookbooks
 ```
 $ sudo chef-solo -c solo.rb -j charon.json
 ```
-* Charon will be mounted at '/srv/charon_fs'. Just use it as any local file system.
+* Charon will be mounted at `/srv/charon_fs`. Just use it as any local file system.
 
 **5 - To Stop and re-run CharonFS:**
 
 * To umount the Charon file system run:
 ```
 $ cd /srv/Charon
-$ ./Charon_umount.sh charon_fs
+$ ./Charon_umount.sh /srv/charon_fs
 ```
 * To re-run Charon:
 ```
