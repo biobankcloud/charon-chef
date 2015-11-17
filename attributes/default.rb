@@ -1,4 +1,4 @@
-default[:charon][:version]                 = "0.1.0"
+default[:charon][:version]                 = "0.2.0"
 default[:charon][:user]                    = "root"
 default[:charon][:group]                   = "root"
 default[:charon][:dir]                     = "/srv"
@@ -27,7 +27,7 @@ default[:azure][:access_key]               = ""
 default[:azure][:secret_key]               = ""
 
 default[:charon][:public_ips]              = ['10.0.2.15']
-default[:charon][:private_ips]             = ['10.0.2.15']
+default[:charon][:private_ips]             = ['10.0.2.15']
 
 default[:hdfs][:folder]               	   = "/charon-rep"
 default[:hdfs][:ip]               	   = "localhost"
