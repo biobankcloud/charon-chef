@@ -176,6 +176,13 @@ template "#{node[:charon][:home]}/config/hopsfsRep.config" do
   mode 0655
 end
 
+template "#{node[:charon][:home]}/config/locations.config" do
+  source "locations.config.erb"
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode 0655
+end
+
 bash "config_fuse_conf" do
   user "root"
   #cwd "#{node[:charon][:home]}"
