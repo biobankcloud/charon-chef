@@ -19,7 +19,7 @@ $ git --version
 ```
 **3 - After that, create the accounts in the clouds and get the API credentials:**
 
-To create the accounts, follow the links bellow (you can use Charon only with Amazon S3 - in this case the data will be replicated among four different aws regions - read the step 4 (bellow) to configure CharonFS in that way):
+To create the accounts, follow the links bellow (you can use Charon only with Amazon S3 - in this case the data will be replicated among four different S3 regions - read the step 4 (bellow) to configure CharonFS in that way):
 * [Amazon S3](https://aws.amazon.com/s3/) - follow the yellow tab in the upper right corner.
 * [Google Storage](https://cloud.google.com/storage/docs/signup) - first, create a google account. After that, follow the steps in the link to activate the Google Cloud Storage.
 * [RackSpace Files](http://www.rackspace.co.uk/) - follow the green tab in the upper right corner to sign up in the RackSpace Cloud. Sign up for the 'Managed Infrastructure' option (you will be billed only for the storage you use).
