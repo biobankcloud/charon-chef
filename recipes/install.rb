@@ -142,12 +142,14 @@ if node[:charon][:use_only_aws] == 'false'
      owner node[:charon][:user]
      group node[:charon][:group]
      mode 0655
+   end
 else
    template "#{node[:charon][:home]}/config/depsky.config" do
      source "only-aws.config.erb"
      owner node[:charon][:user]
      group node[:charon][:group]
      mode 0655
+   end
 end
 
 template "#{node[:charon][:home]}/config/singleCloud.config" do
