@@ -2,7 +2,8 @@
   "charon": {
      "user": "",
      "group": "", 
-     "user_email": ""    
+     "user_email": "",
+     "use_only_aws": "false"    
   }, 
   "aws": {
      "access_key": "",
