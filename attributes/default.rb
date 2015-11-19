@@ -28,15 +28,6 @@ default[:rackspace][:secret_key]           = ""
 default[:azure][:access_key]               = ""
 default[:azure][:secret_key]               = ""
 
-default[:charon][:public_ips]              = ['10.0.2.15']
-default[:charon][:private_ips]             = ['10.0.2.15']
-
 default[:hdfs][:folder]               	   = "/charon-rep"
-default[:hdfs][:ip]               	   = "localhost"
-default[:hdfs][:port]               	   = 9000
 default[:hdfs][:conf_dir]                  = ""
 
-default[:hadoop][:yarn][:user]             = "yarn"
-default[:hadoop][:yarn][:nm][:memory_mbs]  = 3584
-default[:hadoop][:yarn][:ps_port]          = 20888
-default[:hadoop][:yarn][:vpmem_ratio]      = 4.1

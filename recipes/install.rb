@@ -122,6 +122,7 @@ end
 libpath = File.expand_path '../../../kagent/libraries', __FILE__
 my_private_ip = my_private_ip()
 my_public_ip = my_public_ip()
+node_ip = node['ipaddress']
 
 r = Random.new
 random_id=r.rand(0..65635)
@@ -131,7 +132,7 @@ template "#{node[:charon][:home]}/config/charon.config" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
-  variables({ :my_ip => my_public_ip ,
+  variables({ :my_ip => node_ip ,
               :id => random_id
            })
 end
@@ -164,7 +165,7 @@ template "#{node[:charon][:home]}/config/site-id.charon" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
-  variables({ :my_ip => my_public_ip ,
+  variables({ :my_ip => node_ip ,
             :id => random_id
          })
 end
