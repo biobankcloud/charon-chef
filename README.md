@@ -19,7 +19,7 @@ $ git --version
 ```
 **3 - After that, create the accounts in the clouds and get the API credentials:**
 
-To create the accounts, follow the links bellow:
+To create the accounts, follow the links bellow. If you prefer, you can use four different Amazon S3 regions instead of four different cloud providers. In this case, read the step 4 (bellow) to configure CharonFS in that way).
 * [Amazon S3](https://aws.amazon.com/s3/) - follow the yellow tab in the upper right corner.
 * [Google Storage](https://cloud.google.com/storage/docs/signup) - first, create a google account. After that, follow the steps in the link to activate the Google Cloud Storage.
 * [RackSpace Files](http://www.rackspace.co.uk/) - follow the green tab in the upper right corner to sign up in the RackSpace Cloud. Sign up for the 'Managed Infrastructure' option (you will be billed only for the storage you use).
@@ -43,12 +43,13 @@ $ cd charon-chef
 $ berks vendor /tmp/cookbooks
 ```
 * Fill up the charon.json file:
-  * the `user` and `group` should be filled with the result of the command `$ echo $USER`
-  * the `user_email` should be the user email
-  * the `access_key` and `secret_key` attributes for the four clouds must be fill up with the credentials fetched in the step 3
-  * the `cannonical_id` attribute under the `aws` provider can be found in the Security Credentials page of your AWS Management Console
+  * the `user` and `group` attributes should be filled with the result of the command `$ echo $USER`.
+  * the `user_email` attribute should be the user email.
+  * the `use_only_aws` attribute should be set to `true` if you only want to use Amazon S3 to replicate the data. In this case, you only need to fill the credentials for the `aws` provider. 
+  * the `access_key` and `secret_key` attributes for the four clouds must be fill up with the credentials fetched in the step 3.
+  * the `cannonical_id` attribute under the `aws` provider can be found in the Security Credentials page of your AWS Management Console.
   * the `email` attribute under the `google` provider should be the google email associated to your google cloud storage account.
-  * the `conf_dir` attribute of `hdfs` sould indicate the path to the folder containing the hdfs configurations files (ex: core-site.xml) 
+  * the `conf_dir` attribute of `hdfs` sould indicate the path to the folder containing the hdfs configurations files (ex: core-site.xml).
 ```
 $ sudo chef-solo -c solo.rb -j charon.json
 ```
