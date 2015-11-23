@@ -1,6 +1,6 @@
 name             'charon'
-maintainer       "Jim Dowling"
-maintainer_email "jdowling@kth.se"
+maintainer       "Tiago Oliveira"
+maintainer_email "toliveira@lasige.di.fc.ul.pt"
 license          "Apache v2.0"
 description      'Installs/Configures Charon'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
@@ -17,23 +17,23 @@ depends 'hadoop'
   supports os
 end
 
-attribute "charon/version",
-:display_name => "Charon version number",
-:description => "Charon version number",
-:type => 'string',
-:required => "required"
-
 attribute "charon/user",
 :display_name => "Username to run Charon as",
 :description => "Username to run Charon as",
 :type => 'string',
 :required => "required"
 
-attribute "charon/password",
-:display_name => "User password",
-:description => "User password",
+attribute "charon/group",
+:display_name => "Group to run Charon as",
+:description => "Group to run Charon as",
 :type => 'string',
 :required => "required"
+
+#attribute "charon/password",
+#:display_name => "User password",
+#:description => "User password",
+#:type => 'string',
+#:required => "required"
 
 attribute "charon/mount_point",
 :description => "The name of the mount point of Charon",
@@ -42,6 +42,11 @@ attribute "charon/mount_point",
 
 attribute "charon/email",
 :description => "Email address for Charon administrator",
+:type => 'string',
+:required => "required"
+
+attribute "charon/use_only_aws",
+:description => "Do you want to Run Charon only with AWS credentials?",
 :type => 'string',
 :required => "required"
 
@@ -95,14 +100,10 @@ attribute "azure/secret_key",
 :type => 'string',
 :required => "required"
 
-attribute "hdfs/folder",
+attribute "hdfs/charon_rep_dir",
 :description => "Azure secret key",
 :type => 'string'
 
-attribute "hdfs/ip",
-:description => "Azure secret key",
-:type => 'string'
-
-attribute "hdfs/port",
-:description => "Azure secret key",
+attribute "hdfs/conf_dir",
+:description => "The location of HDFS configuration directory",
 :type => 'string'

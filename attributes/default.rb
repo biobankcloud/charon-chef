@@ -30,6 +30,8 @@ default[:rackspace][:secret_key]           = ""
 default[:azure][:access_key]               = ""
 default[:azure][:secret_key]               = ""
 
-default[:hdfs][:folder]               	   = "/charon-rep"
+default[:hdfs][:charon_rep_dir]            = "/charon-rep"
+default[:hdfs][:conf_dir]                  = "/srv/hadoop/etc/hadoop"
+
 
 
