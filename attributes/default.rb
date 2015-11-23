@@ -1,3 +1,5 @@
+include_attribute "hadoop"
+
 default[:charon][:version]                 = "0.2.0"
 default[:charon][:user]                    = "root"
 default[:charon][:group]                   = "root"
@@ -29,5 +31,5 @@ default[:azure][:access_key]               = ""
 default[:azure][:secret_key]               = ""
 
 default[:hdfs][:folder]               	   = "/charon-rep"
-default[:hdfs][:conf_dir]                  = ""
+
 
