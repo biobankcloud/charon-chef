@@ -23,7 +23,7 @@
      "access_key": "",
      "secret_key": ""	 
   },
-  "hdfs": {
+  "hadoop": {
      "conf_dir" : "/srv/hadoop/etc/hadoop"
   },
   "private_ips": ["127.0.0.1"],

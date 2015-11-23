@@ -11,6 +11,7 @@ recipe            "charon::default", "Installs a Charon FUSE client"
 
 depends 'java'
 depends 'kagent'
+depends 'hadoop'
 
 %w{ ubuntu debian }.each do |os|
   supports os
