@@ -22,12 +22,16 @@ suites:
       - recipe[charon::default]
 
     attributes:
-         kagent:
-            private_ips: ["10.0.2.15"]
-            public_ips: ["10.0.2.15"]
          charon:
-            private_ips: ["10.0.2.15"]
-            public_ips: ["10.0.2.15"]
+            default:
+                private_ips: ["10.0.2.15"]
+            user: glassfish
+            group: hadoop
+            user_email: jdowling@kth.se
+            use_only_aws: true
+            access_key: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+            secret_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+            conf_dir: "/srv/hadoop/etc/hadoop"
          private_ips: ["10.0.2.15"]
          public_ips: ["10.0.2.15"]
          vagrant: "enabled"
