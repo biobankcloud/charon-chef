@@ -29,6 +29,13 @@ attribute "charon/group",
 :type => 'string',
 :required => "required"
 
+attribute "charon/user_email",
+:display_name => "Email of user used to share data",
+:description => "Email of user used to share data",
+:type => 'string',
+:required => "required"
+
+
 #attribute "charon/password",
 #:display_name => "User password",
 #:description => "User password",
