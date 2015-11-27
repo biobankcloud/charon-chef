@@ -57,60 +57,60 @@ attribute "charon/use_only_aws",
 :type => 'string',
 :required => "required"
 
-attribute "charon/aws/access_key",
+attribute "aws/access_key",
 :description => "Aws access key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/aws/secret_key",
+attribute "aws/secret_key",
 :description => "Aws secret key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/aws/cannonical_id",
+attribute "aws/cannonical_id",
 :description => "Aws cannonical id",
 :type => 'string',
 :required => "required"
 
-attribute "charon/google/access_key",
+attribute "google/access_key",
 :description => "Google access key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/google/secret_key",
+attribute "google/secret_key",
 :description => "Google secret key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/google/email",
+attribute "google/email",
 :description => "Google email",
 :type => 'string',
 :required => "required"
 
-attribute "charon/rackspace/access_key",
+attribute "rackspace/access_key",
 :description => "RackSpace access key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/rackspace/secret_key",
+attribute "rackspace/secret_key",
 :description => "RackSpace secret key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/azure/access_key",
+attribute "azure/access_key",
 :description => "Azure access key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/azure/secret_key",
+attribute "azure/secret_key",
 :description => "Azure secret key",
 :type => 'string',
 :required => "required"
 
-attribute "charon/hdfs/repo_dir",
+attribute "hdfs/charon_rep_dir",
 :description => "Azure secret key",
 :type => 'string'
 
-attribute "charon/hdfs/conf_dir",
+attribute "hdfs/conf_dir",
 :description => "The location of HDFS configuration directory",
 :type => 'string'
