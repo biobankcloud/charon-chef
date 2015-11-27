@@ -19,7 +19,7 @@ $ git --version
 ```
 **3 - After that, create the accounts in the clouds and get the API credentials:**
 
-To create the accounts, follow the links bellow. If you prefer, you can use four different Amazon S3 regions instead of four different cloud providers. In this case, read the step 4 (bellow) to configure CharonFS in that way).
+To create the accounts, follow the links bellow. If you prefer, you can use four different Amazon S3 regions instead of four different cloud providers. In this case, read the step 4 (bellow) to configure CharonFS in that way.
 * [Amazon S3](https://aws.amazon.com/s3/) - follow the yellow tab in the upper right corner.
 * [Google Storage](https://cloud.google.com/storage/docs/signup) - first, create a google account. After that, follow the steps in the link to activate the Google Cloud Storage.
 * [RackSpace Files](http://www.rackspace.co.uk/) - follow the green tab in the upper right corner to sign up in the RackSpace Cloud. Sign up for the 'Managed Infrastructure' option (you will be billed only for the storage you use).
@@ -53,14 +53,14 @@ $ berks vendor /tmp/cookbooks
 ```
 $ sudo chef-solo -c solo.rb -j charon.json
 ```
-* Charon will be mounted at `/srv/charon_fs`. Just use it as any local file system.
+* Charon will be mounted at `/srv/Charon/charon_fs`. Just use it as any local file system.
 
 **5 - To Stop and re-run CharonFS:**
 
 * To umount the Charon file system run:
 ```
 $ cd /srv/Charon
-$ ./Charon_umount.sh /srv/charon_fs
+$ ./Charon_umount.sh /srv/Charon/charon_fs
 ```
 * To re-run Charon:
 ```
