@@ -1,20 +1,20 @@
 driver.type=AMAZON-S3
 driver.id=cloud1
-accessKey=<%= node[:aws][:access_key] %>
-secretKey=<%= node[:aws][:secret_key] %>
+accessKey=<%= node[:charon][:aws][:access_key] %>
+secretKey=<%= node[:charon][:aws][:secret_key] %>
 
 driver.type=GOOGLE-STORAGE
 driver.id=cloud2
-accessKey=<%= node[:google][:access_key] %>
-secretKey=<%= node[:google][:secret_key] %>
+accessKey=<%= node[:charon][:google][:access_key] %>
+secretKey=<%= node[:charon][:google][:secret_key] %>
 
 driver.type=RACKSPACE
 driver.id=cloud3
-accessKey=<%= node[:rackspace][:access_key] %>
-secretKey=<%= node[:rackspace][:secret_key] %>
+accessKey=<%= node[:charon][:rackspace][:access_key] %>
+secretKey=<%= node[:charon][:rackspace][:secret_key] %>
 
 driver.type=WINDOWS-AZURE
 driver.id=cloud4
-accessKey=<%= node[:azure][:access_key] %>
-secretKey=<%= node[:azure][:secret_key] %>
+accessKey=<%= node[:charon][:azure][:access_key] %>
+secretKey=<%= node[:charon][:azure][:secret_key] %>
 

@@ -3,25 +3,25 @@
      "user": "",
      "group": "", 
      "user_email": "",
-     "use_only_aws": "false"    
-  }, 
-  "aws": {
-     "access_key": "",
-     "secret_key": "",
-     "cannonical_id": ""	 
-  },
-  "google": {
-     "access_key": "",
-     "secret_key": "",
-     "email": ""	 
-  },
-  "rackspace": {
-     "access_key": "",
-     "secret_key": ""	 
-  },
-  "azure": {
-     "access_key": "",
-     "secret_key": ""	 
+     "use_only_aws": "false", 
+     "aws": {
+        "access_key": "",
+        "secret_key": "",
+        "cannonical_id": ""	 
+     },
+     "google": {
+        "access_key": "",
+        "secret_key": "",
+        "email": ""	 
+     },
+     "rackspace": {
+        "access_key": "",
+        "secret_key": ""	 
+     },
+     "azure": {
+        "access_key": "",
+        "secret_key": ""	 
+     }   
   },
   "hadoop": {
      "conf_dir" : "/srv/hadoop/etc/hadoop"

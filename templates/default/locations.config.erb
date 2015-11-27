@@ -7,4 +7,4 @@ cloud=cloud{file:config/singleCloud.config}
 
 local=privateRep{cache_{CLIENT_ID}/privateRep}
 
-external=externalRep{hopsfs:<%= node[:hdfs][:charon_rep_dir] %>}
+external=externalRep{hopsfs:<%= node[:charon][:hdfs][:repo_dir] %>}

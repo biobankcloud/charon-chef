@@ -34,12 +34,13 @@ user node[:charon][:user] do
   home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
-  not_if "getent passwd #{node[:charon]['user']}"
+  not_if "getent passwd #{node[:charon][:user]}"
 end
 
 group node[:charon][:group] do
   action :modify
   members node[:charon][:user] 
+#  members [node[:charon][:user], 'nosudo']
   append true
 end
 
@@ -49,15 +50,15 @@ directory node[:charon][:dir] do
   mode "0774"
   recursive true
   action :create
-#  not_if { File.directory?("#{node[:charon][:dir]}") }
+  not_if { File.directory?("#{node[:charon][:dir]}") }
 end
 
-directory node[:charon][:mount_point] do
-  owner node[:charon][:user]
-  group node[:charon][:group]
-  mode "0774"
-  action :create
-end
+#directory node[:charon][:mount_point] do
+#  owner node[:charon][:user]
+#  group node[:charon][:group]
+#  mode "0774"
+#  action :create
+#end
 
 node.default['java']['jdk_version'] = 7
 include_recipe "java"
@@ -95,8 +96,10 @@ end
 hin = "#{node[:charon][:home]}/.charon_extracted_#{node[:charon][:version]}"
 base_name = File.basename(base_package_filename, ".tar.gz")
 bash 'extract-charon' do
-  user node[:charon][:user]
-  group node[:charon][:group]
+#  guard_interpreter :bash
+#  user node[:charon][:user]
+#  group node[:charon][:group]
+  user "root"
   code <<-EOH
 	tar -zxzf #{cached_package_filename} -C #{node[:charon][:dir]}
 	chown -RL #{node[:charon][:user]}:#{node[:charon][:group]} #{node[:charon][:home]}
@@ -119,7 +122,7 @@ end
 
 bash "config_libjavafs" do
   user "#{node[:charon][:user]}"
-  group "#{node[:charon][:user]}"
+  group "#{node[:charon][:group]}"
   cwd "#{node[:charon][:home]}"
   code <<-EOH
   sh configure_libjavafs.sh
@@ -199,8 +202,16 @@ template "#{node[:charon][:home]}/config/locations.config" do
   mode 0655
 end
 
+file "/etc/fuse.conf" do
+#  user node[:charon][:user]
+#  user "root"
+  mode 0644
+end
+
+
 bash "config_fuse_conf" do
-  user "root"
+  user node[:charon][:user]
+#  user "root"
   #cwd "#{node[:charon][:home]}"
   code <<-EOH
   perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
