@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//package se.kth.bbc.fileoperations;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,16 +14,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
-import java.io.StringReader;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -42,10 +31,20 @@ public class CharonOperations {
 	private static String addedGrantees = CHARON_PATH + File.separator + "config/addedGrantees";
 	private static String my_site_id = CHARON_PATH + File.separator + "config/site-id.charon";
 
+	/**
+	 * Sets the charon mount point path. The default is /srv/Charon/charon_fs
+	 * 
+	 * @param path - the new mount point path
+	 */
 	public static void setCharonMountPointPath(String path){
 		charonMountPointPath = path;
 	}
 
+	/**
+	 * Sets the charon install path. The default is /srv/Charon
+	 * 
+	 * @param path - the new charon install path
+	 */
 	public static void setCharonInstallPath(String path){
 		CHARON_PATH = path;
 		addNewGranteePath = CHARON_PATH + File.separator + "NewSiteIds";
@@ -54,7 +53,13 @@ public class CharonOperations {
 		my_site_id = CHARON_PATH + File.separator + "config/site-id.charon";
 	}
 
-	public static void addSiteId(String site_id){
+	/**
+	 * Add a new site id with information about user to be added
+	 * 
+	 * @param site_id - the content of another user site_id
+	 * @throws Exception
+	 */
+	public static void addSiteId(String site_id) throws Exception{
 		String site_id_filename = "site-id.charon";
 		File siteIdFile_temp = new File(CHARON_PATH + File.separator + site_id_filename);
 		try {
@@ -66,12 +71,19 @@ public class CharonOperations {
 			out.close();
 
 			siteIdFile_temp.renameTo(new File(addNewGranteePath + File.separator + site_id_filename));
+			siteIdFile_temp.delete();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
 	}
-
-	public static void removeSiteId(int granteeId){
+	
+	/**
+	 * Remove a site_id
+	 * 
+	 * @param granteeId - the id of the site_id to be removed
+	 * @throws Exception
+	 */
+	public static void removeSiteId(int granteeId) throws Exception{
 		File grantees = new File(addedGrantees);
 		File temp = new File(addedGrantees+"_");
 		FileInputStream fis;
@@ -97,13 +109,19 @@ public class CharonOperations {
 			fis.close();
 			fos.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
 	}
-
-	public static String listSiteIds(){
+	
+	/**
+	 * List all the site_ids already added
+	 * 
+	 * @return a String in with each line represents a site_id: id, name, ip and port  
+	 * @throws Exception
+	 */
+	public static String listSiteIds() throws Exception{
 		File grantees = new File(addedGrantees);
 		FileInputStream fis;
 		try {
@@ -119,14 +137,18 @@ public class CharonOperations {
 			fis.close();
 			return toRet;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
-		return null;
 	}
 
-	public static String getMySiteId(){
+	/**
+	 * Get the content of the site_id of the current Charon user
+	 * @return the content of the site_id
+	 * @throws Exception
+	 */
+	public static String getMySiteId() throws Exception{
 		File site_id = new File(my_site_id);
 		FileInputStream fis;
 		try {
@@ -141,28 +163,46 @@ public class CharonOperations {
 			br.close();
 			return toRet;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
-		return null;
-	}
-
-	public static String createSharedRepository(int granteeId, String repPath, String permissions){
-
-		if(!mkdir(repPath, null))
-			return "ERROR: cannot create the folder or the folder is no empty!";
-		return share(repPath, permissions, granteeId);
 	}
 
 	/**
-	 * Creates a directory
-	 *
-	 * @param path - The path to the new folder
-	 * @param location - the location where the files inside that path will be placed (null represents the cloud-of-clouds)
-	 * @return - true if the folder is created successfully (or if the folder already exists), false otherwise
+	 * Creates a empty repository and shares it
+	 * 
+	 * @param granteeId - the id of the site_id to share with
+	 * @param repPath - the path to the repository to be shared
+	 * @param permissions - the permissions ('r' or 'rw')
+	 * @return a share_token to share with the grantees site_ids
+	 * @throws Exception
 	 */
-	public static boolean mkdir(String path, String location){
+	public static String createSharedRepository(int granteeId, String repPath, String permissions) throws Exception{
+
+		try {
+			mkdir(repPath, null);
+		} catch (Exception e) {
+			throw new Exception("Something went wrong!");
+		}
+		if(!repPath.startsWith("/"))
+			repPath = File.separator+repPath;
+		File file = new File(charonMountPointPath + repPath);
+		if(file.exists())
+			if(file.list().length > 0)
+				throw new Exception("The repository must be empty to be shared!");
+		
+		 return share(repPath, permissions, granteeId);
+	}
+
+	/**
+	 * Creates a repository
+	 *
+	 * @param path - the new repository path
+	 * @param location - the location where the files inside that path will be placed (null represents the default location)
+	 * @throws Exception
+	 */
+	public static void mkdir(String path, String location) throws Exception{
 
 		if(!path.startsWith("/"))
 			path = File.separator+path;
@@ -173,38 +213,31 @@ public class CharonOperations {
 			file = new File(charonMountPointPath+File.separator+".site="+location+path);
 		}
 		int count = 0;
-		if(file.exists()){
-			if(file.list().length == 0)
-				return true;
-			else
-				return false;
-		}
+		
 		while(!file.exists() && count < 3) {
 			boolean flag = file.mkdir();
-			if(flag)
-				return true;
-			else
+			if(!flag)
 				count ++;
 		}
-		return false;
+		if(count >= 3)
+			throw new Exception("Something went wrong!");
 	}
 
 	/**
-	 * Share a folder with other users
+	 * Share a repository with other site_ids
 	 *
-	 * @param path - the path to the folder (the folder should be empty)
-	 * @param permissions - the desired permissions ('rxw' to read and write)
-	 * @param granteId - the id of the grantee user
-	 * @return - true if the folder is successfully shared, false otherwise
+	 * @param path - the path to the repository to be shared (the repository should be empty)
+	 * @param permissions - the desired permissions ('r' or 'rw')
+	 * @param granteId - the id of the grantee
+	 * @return - a share_token to share with the grantees site_ids
 	 */
-	public static String share(String path, String permissions, int granteeId){
+	public static String share(String path, String permissions, int granteeId) throws Exception{
 
 		if(!path.startsWith("/"))
 			path = File.separator+path;
 
 		try {
 			String ACLcommand = "setfacl -m u:"+granteeId+":"+permissions+" "+charonMountPointPath+path;
-			//Process p = Runtime.getRuntime().exec(new String[]{"bash","-c",ACLcommand});
 			Process p = Runtime.getRuntime().exec(ACLcommand);
 			p.waitFor();
 
@@ -218,20 +251,26 @@ public class CharonOperations {
 
 					f.delete();
 					if(data!=null){
+						break;
 					}
+					rd.close();
 				}
 			}
 			return new String(data);
-
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
-		return null;
 	}
 
-	public static boolean addSharedRepository(String token){
+	/**
+	 * Add a shared repository shared by a different site_id
+	 * 
+	 * @param token - the token shared by the owner of the shared repository 
+	 * @throws Exception
+	 */
+	public static void addSharedRepository(String token) throws Exception{
 
 		File tokenFile_temp = new File(CHARON_PATH + File.separator + "token.share");
 		try {
@@ -242,28 +281,31 @@ public class CharonOperations {
 			out.write(token.getBytes());
 			out.close();
 			tokenFile_temp.renameTo(new File(addNewSNSPath + File.separator + "token.share"));
-			return true;
+			tokenFile_temp.delete();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
-		return false;
 	}
-
-	public static void clean(String path){
+	
+	/**
+	 * Remove all the content of a desired repository, including deleting the data from the clouds
+	 * @param path - the path of the repository to be deleted
+	 * @throws Exception
+	 */
+	public static void clean(String path) throws Exception{
 
 		if(!path.startsWith("/"))
 			path = File.separator+path;
 
 		String RMcommand = "rm -rf " + charonMountPointPath+path;
-		//Process p = Runtime.getRuntime().exec(new String[]{"bash","-c",ACLcommand});
 		Process p;
 		try {
 			p = Runtime.getRuntime().exec(RMcommand);
 			p.waitFor();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			throw new Exception("Something went wrong!");
 		}
 	}
 }
