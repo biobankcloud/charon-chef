@@ -8,7 +8,7 @@ default[:charon][:dir]                                   = "/srv"
 default[:charon][:home]                                  = "#{node[:charon][:dir]}/Charon"
 default[:charon][:logs_dir]                              = "#{node[:charon][:home]}/logs"
 
-default[:charon][:user_email]                            = "tiago.m.o.89@gmail.com"
+default[:charon][:user_email]                            = ""
 default[:charon][:mount_point]                           = "#{node[:charon][:home]}/charon_fs"
 default[:charon][:download_url]                          = "https://dl.dropboxusercontent.com/u/2933066/charon-#{node[:charon][:version]}.tar.gz"
 
