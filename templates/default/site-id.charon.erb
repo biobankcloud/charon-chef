@@ -6,8 +6,8 @@ addr=<%= @my_ip %>:11000
 <% if node[:charon][:cannonical_id][:aws_can_id] != '' %>
 driver.type=AMAZON-S3
 canonicalId=<%= node[:charon][:cannonical_id][:aws_can_id] %>
-<% end %>
 
+<% end %>
 <% if node[:charon][:cannonical_id][:google_email] != '' %>
 driver.type=GOOGLE-STORAGE
 canonicalId=<%= node[:charon][:cannonical_id][:google_email] %>
