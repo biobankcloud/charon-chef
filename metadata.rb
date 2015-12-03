@@ -41,6 +41,27 @@ attribute "charon/site_id_name",
 :type => 'string',
 :required => "required"
 
+attribute "charon/locations/default_location",
+:display_name => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
+:description => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
+:type => 'string',
+:default => "cloud",
+:required => "required"
+
+attribute "charon/locations/use_coc",
+:display_name => "If you want to use a cloud-of-clouds configuration set this to 'true'",
+:description => "If you want to use a cloud-of-clouds configuration set this to 'true'",
+:type => 'string',
+:default => "false",
+:required => "required"
+
+attribute "charon/locations/use_cloud",
+:display_name => "If you want to use a single cloud (aws) configuration set this to 'true'",
+:description => "If you want to use a single cloud (aws) configuration set this to 'true'",
+:type => 'string',
+:default => "true",
+:required => "required"
+
 attribute "charon/credentials/aws/access_key",
 :display_name => "Aws access key",
 :description => "Aws access key",
@@ -90,27 +111,6 @@ attribute "charon/cannonical_id/google_email",
 :display_name => "Google email to share between different accounts",
 :description => "Google email to share between different accounts",
 :type => 'string'
-
-attribute "charon/locations/default_location",
-:display_name => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
-:description => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
-:type => 'string',
-:default => "cloud",
-:required => "required"
-
-attribute "charon/locations/use_coc",
-:display_name => "If you want to use a cloud-of-clouds configuration set this to 'true'",
-:description => "If you want to use a cloud-of-clouds configuration set this to 'true'",
-:type => 'string',
-:default => "false",
-:required => "required"
-
-attribute "charon/locations/use_cloud",
-:display_name => "If you want to use a single cloud (aws) configuration set this to 'true'",
-:description => "If you want to use a single cloud (aws) configuration set this to 'true'",
-:type => 'string',
-:default => "true",
-:required => "required"
 
 attribute "charon/hdfs/repo_dir",
 :description => "Azure secret key",

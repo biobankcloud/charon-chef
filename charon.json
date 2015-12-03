@@ -4,6 +4,11 @@
      "group": "", 
      "user_email": "",
      "site_id_name": "",
+     "locations": {
+        "default_location": "cloud",
+        "use_coc": "false",
+        "use_cloud": "true"
+     },
      "credentials": { 
         "aws": {
            "access_key": "",
@@ -25,13 +30,7 @@
      "cannonical_id" : {
         "aws_can_id": "",
         "google_email": "" 
-     },
-     "locations": {
-        "default_location": "cloud",
-        "use_coc": "false",
-        "use_cloud": "true"
-     } 
-  
+     }  
   },
   "hadoop": {
      "conf_dir" : "/srv/hadoop/etc/hadoop"
