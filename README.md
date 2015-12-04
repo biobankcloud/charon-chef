@@ -53,7 +53,7 @@ $ berks vendor /tmp/cookbooks
   * the `google_email` must be set with the google email account to be possible share with different accounts. If not seted, you will only be able to share with a user who have the same credentials as you. You maybe just want tho fill this if you set `use_coc` to 'true'.
   * the `conf_dir` attribute should indicate the path to the folder containing the hdfs configurations files (ex: core-site.xml).
 ```
-$ sudo chef-solo -c solo.rb -j charon.json
+$ sudo -E chef-solo -c solo.rb -j charon.json
 ```
 * Charon will be mounted at `/srv/Charon/charon_fs`. Just use it as any local file system.
 
