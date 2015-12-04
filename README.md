@@ -69,7 +69,7 @@ $ ./Charon_umount.sh /srv/Charon/charon_fs
 $ cd /srv/Charon
 $ nohup ./Charon_mount.sh > /srv/Charon/logs &
 ```
-* To clean the clouds in order to start a clean mount point
+* To clean the clouds in order to start a clean mount point:
 ```
 $ cd /srv/Charon
 $ ./Charon_clean.sh
