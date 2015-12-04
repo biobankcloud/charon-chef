@@ -286,26 +286,4 @@ public class CharonOperations {
 			throw new Exception("Something went wrong!");
 		}
 	}
-	
-	/**
-	 * Remove all the content of a desired repository, including deleting the data from the clouds
-	 * @param path - the path of the repository to be deleted
-	 * @throws Exception
-	 */
-	public static void clean(String path) throws Exception{
-
-		if(!path.startsWith("/"))
-			path = File.separator+path;
-
-		String RMcommand = "rm -rf " + charonMountPointPath+path;
-		Process p;
-		try {
-			p = Runtime.getRuntime().exec(RMcommand);
-			p.waitFor();
-		} catch (IOException e) {
-			throw new Exception("Something went wrong!");
-		} catch (InterruptedException e) {
-			throw new Exception("Something went wrong!");
-		}
-	}
 }
