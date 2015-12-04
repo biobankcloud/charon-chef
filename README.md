@@ -45,12 +45,12 @@ $ berks vendor /tmp/cookbooks
 * Fill up the charon.json file:
   * the `user` and `group` attributes should be filled with the result of the command `$ echo $USER`.
   * the `user_email` attribute should be the user email.
-  * the `site_id_name` attribute should be set name of the username of the user
+  * the `site_id_name` attribute should be set with the username of the tenant running the system.
   * the `default_location` attribute defines the defaut location to Charon store the data and metadata. Should be set to 'coc', to use the cloud-of-clouds, or to 'cloud', to use `aws`.
   * the `use_coc` and `use_cloud` attributes defines the possible storage location where the data can be stored. They should be set to 'true' or 'false'. Depending on the value choosed in `default_location`, at least one of this two attributes must be set to 'true'.
-  * the `access_key` and `secret_key` attributes for the four clouds may be filled up with the credentials fetched in the step 3. If you set to 'true' the attribute `use_coc`, you must fill the four cloud credentials; if you only set to 'true' the `use_cloud` one, you only need to fill the `aws` credentials
-  * the `aws_can_id` must be set with the aws s3 canonical id to be possible share with different accounts. If not seted, you will only be able to share with a user who have the same credentials as you. You can find the aws canonical id in the Security Credentials page of your AWS Management Console.
-  * the `google_email` must be set with the google email account to be possible share with different accounts. If not seted, you will only be able to share with a user who have the same credentials as you. You maybe just want tho fill this if you set `use_coc` to 'true'.
+  * the `access_key` and `secret_key` attributes for the four clouds may be filled up with the credentials fetched in the step 3. If you set to 'true' the attribute `use_coc`, you must fill the four cloud credentials; if you only set to 'true' the `use_cloud` one, you only need to fill the `aws` credentials. However, if you have your `aws` keys as environment variables you don't need to set them here. Charon will first look for `aws` keys in the attributes, and if empty will look for them as environment variables.
+  * the `aws_can_id` must be set with the aws s3 canonical id to be possible share with different accounts. If not setted, you will only be able to share with a user who have the same credentials as you. You can find the aws canonical id in the Security Credentials page of your AWS Management Console.
+  * the `google_email` must be set with the google email used in your google storage account in order to be possible share with different accounts. If not setted, you will only be able to share resources with a user who have the same credentials as you. You may just want to fill this if you set `use_coc` to 'true'.
   * the `conf_dir` attribute should indicate the path to the folder containing the hdfs configurations files (ex: core-site.xml).
 ```
 $ sudo -E chef-solo -c solo.rb -j charon.json
@@ -68,4 +68,9 @@ $ ./Charon_umount.sh /srv/Charon/charon_fs
 ```
 $ cd /srv/Charon
 $ nohup ./Charon_mount.sh > /srv/Charon/logs &
+```
+* To clean the clouds in order to start a clean mount point
+```
+$ cd /srv/Charon
+$ ./Charon_clean.sh
 ```
