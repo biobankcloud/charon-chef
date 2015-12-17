@@ -146,21 +146,13 @@ template "#{node[:charon][:home]}/config/charon.config" do
            })
 end
 
-if node[:charon][:use_only_aws] == 'false'
-   template "#{node[:charon][:home]}/config/depsky.config" do
-     source "depsky.config.erb"
-     owner node[:charon][:user]
-     group node[:charon][:group]
-     mode 0655
-   end
-else
-   template "#{node[:charon][:home]}/config/depsky.config" do
-     source "only-aws.config.erb"
-     owner node[:charon][:user]
-     group node[:charon][:group]
-     mode 0655
-   end
+template "#{node[:charon][:home]}/config/depsky.config" do
+  source "depsky.config.erb"
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode 0655
 end
+
 
 template "#{node[:charon][:home]}/config/singleCloud.config" do
   source "singleCloud.config.erb"
@@ -195,11 +187,25 @@ template "#{node[:charon][:home]}/config/hopsfsRep.config" do
   mode 0655
 end
 
+use_coc = node[:charon][:locations][:use_coc] 
+use_cloud = node[:charon][:locations][:use_cloud]
+
+if node[:charon][:locations][:default_location] == "coc"
+  use_coc = true
+end
+
+if node[:charon][:locations][:default_location] == "cloud"
+  use_cloud = true
+end
+
 template "#{node[:charon][:home]}/config/locations.config" do
   source "locations.config.erb"
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
+    variables({ :use_coc => use_coc ,
+ 	      :use_cloud => use_cloud
+         })
 end
 
 file "/etc/fuse.conf" do

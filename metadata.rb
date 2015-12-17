@@ -18,94 +18,99 @@ depends 'hadoop'
 end
 
 attribute "charon/user",
-:display_name => "Username to run Charon as",
-:description => "Username to run Charon as",
+:display_name => "Unix user to run Charon as",
+:description => "Unix user to run Charon as",
 :type => 'string',
 :required => "required"
 
 attribute "charon/group",
-:display_name => "Group to run Charon as",
-:description => "Group to run Charon as",
+:display_name => "Unix group to run Charon as",
+:description => "Unix group to run Charon as",
 :type => 'string',
 :required => "required"
 
 attribute "charon/user_email",
-:display_name => "Email of user used to share data",
-:description => "Email of user used to share data",
+:display_name => "User email",
+:description => "User email",
 :type => 'string',
 :required => "required"
 
-
-#attribute "charon/password",
-#:display_name => "User password",
-#:description => "User password",
-#:type => 'string',
-#:required => "required"
-
-attribute "charon/mount_point",
-:description => "The name of the mount point of Charon",
+attribute "charon/site_id_name",
+:display_name => "User name",
+:description => "User name",
 :type => 'string',
 :required => "required"
 
-attribute "charon/email",
-:description => "Email address for Charon administrator",
+attribute "charon/locations/default_location",
+:display_name => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
+:description => "The default location where Charon will store data and metadata: (use 'coc' or 'cloud')",
 :type => 'string',
+:default => "cloud",
 :required => "required"
 
-attribute "charon/use_only_aws",
-:description => "Do you want to Run Charon only with AWS credentials?",
+attribute "charon/locations/use_coc",
+:display_name => "If you want to use a cloud-of-clouds configuration set this to 'true'",
+:description => "If you want to use a cloud-of-clouds configuration set this to 'true'",
 :type => 'string',
+:default => "false",
 :required => "required"
 
-attribute "charon/aws/access_key",
+attribute "charon/locations/use_cloud",
+:display_name => "If you want to use a single cloud (aws) configuration set this to 'true'",
+:description => "If you want to use a single cloud (aws) configuration set this to 'true'",
+:type => 'string',
+:default => "true",
+:required => "required"
+
+attribute "charon/credentials/aws/access_key",
+:display_name => "Aws access key",
 :description => "Aws access key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/aws/secret_key",
+attribute "charon/credentials/aws/secret_key",
+:display_name => "Aws secret key",
 :description => "Aws secret key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/aws/cannonical_id",
-:description => "Aws cannonical id",
-:type => 'string',
-:required => "required"
-
-attribute "charon/google/access_key",
+attribute "charon/credentials/google/access_key",
+:display_name => "Google access key",
 :description => "Google access key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/google/secret_key",
+attribute "charon/credentials/google/secret_key",
+:display_name => "Google secret key",
 :description => "Google secret key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/google/email",
-:description => "Google email",
-:type => 'string',
-:required => "required"
-
-attribute "charon/rackspace/access_key",
+attribute "charon/credentials/rackspace/access_key",
+:display_name => "RackSpace access key",
 :description => "RackSpace access key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/rackspace/secret_key",
+attribute "charon/credentials/rackspace/secret_key",
+:display_name => "RackSpace secret key",
 :description => "RackSpace secret key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/azure/access_key",
+attribute "charon/credentials/azure/access_key",
+:display_name => "Azure access key",
 :description => "Azure access key",
-:type => 'string',
-:required => "required"
+:type => 'string'
 
-attribute "charon/azure/secret_key",
+attribute "charon/credentials/azure/secret_key",
+:display_name => "Azure secret key",
 :description => "Azure secret key",
-:type => 'string',
-:required => "required"
+:type => 'string'
+
+attribute "charon/cannonical_id/aws_can_id",
+:display_name => "Aws cannonical id to share between different accounts",
+:description => "Aws cannonical id to share between different accounts",
+:type => 'string'
+
+attribute "charon/cannonical_id/google_email",
+:display_name => "Google email to share between different accounts",
+:description => "Google email to share between different accounts",
+:type => 'string'
 
 attribute "charon/hdfs/repo_dir",
 :description => "Azure secret key",

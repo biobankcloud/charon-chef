@@ -1,10 +1,21 @@
 # define the label used to choose the corresponding file locations in the system. 
 # You can use Variables defined in charon.config file
 
-default=coc{file:config/depsky.config}
+DEFAULT_LOCATION=<%= node[:charon][:locations][:default_location] %>
 
+<% if node[:charon][:locations][:use_coc] == 'true' -%>
+coc=coc{file:config/depsky.config}
+<% else %>
+#coc=coc{file:config/depsky.config}
+<% end -%>
+
+<% if node[:charon][:locations][:use_cloud] == 'true' -%>
 cloud=cloud{file:config/singleCloud.config}
+<% else %>
+#cloud=cloud{file:config/singleCloud.config}
+<% end -%>
 
 local=privateRep{cache_{CLIENT_ID}/privateRep}
 
 external=externalRep{hopsfs:<%= node[:charon][:hdfs][:repo_dir] %>}
+

@@ -1,18 +1,23 @@
 # ============= INFO TO SHARE ===========================
+name=<%= node[:charon][:site_id_name] %>
 id=<%= @id %>
 email=<%= node[:charon][:user_email] %>
 addr=<%= @my_ip %>:11000
 
+<% if node[:charon][:cannonical_id][:aws_can_id] != '' %>
 driver.type=AMAZON-S3
-canonicalId=<%= node[:charon][:aws][:cannonical_id] %>
+canonicalId=<%= node[:charon][:cannonical_id][:aws_can_id] %>
 
+<% end %>
+<% if node[:charon][:cannonical_id][:google_email] != '' %>
 driver.type=GOOGLE-STORAGE
-canonicalId=<%= node[:charon][:google][:email] %>
+canonicalId=<%= node[:charon][:cannonical_id][:google_email] %>
 
 driver.type=RACKSPACE
-canonicalId=<%= node[:charon][:user] %>,<%= node[:charon][:google][:email] %>
+canonicalId=<%= node[:charon][:site_id_name] %>,<%= node[:charon][:user_email] %>
 
 driver.type=WINDOWS-AZURE
 canonicalId=
+<% end %>
 # ================================================
 
