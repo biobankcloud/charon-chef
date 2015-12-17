@@ -30,12 +30,13 @@ group node[:charon][:group] do
 end
 
 user node[:charon][:user] do
-  supports :manage_home => true
-  home "/home/#{node[:charon][:user]}"
+#  supports :manage_home => true
+#  home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
   not_if "getent passwd #{node[:charon][:user]}"
 end
+
 
 group node[:charon][:group] do
   action :modify
@@ -52,6 +53,17 @@ directory node[:charon][:dir] do
   action :create
   not_if { File.directory?("#{node[:charon][:dir]}") }
 end
+
+directory node[:charon][:home] do
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode "774"
+  action :create
+  recursive true
+  not_if { File.directory?("#{node[:charon][:home]}") }
+end
+
+
 
 #directory node[:charon][:mount_point] do
 #  owner node[:charon][:user]
@@ -110,6 +122,7 @@ bash 'extract-charon' do
         rm -f #{node[:charon][:home]}/config/*.charon
         # remove the config files that we would otherwise overwrite
         touch #{hin}
+#        chown -R #{node[:charon][:user]} #{node[:charon][:home]}
 	EOH
   not_if { ::File.exist?("#{hin}") }
 end
@@ -223,3 +236,13 @@ bash "config_fuse_conf" do
   perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
   EOH
 end
+
+directory node[:charon][:logs_dir] do
+  owner node[:charon][:user]
+  group node[:charon][:group]
+  mode "770"
+  action :create
+  recursive true
+  not_if { File.directory?("#{node[:charon][:logs_dir]}") }
+end
+
