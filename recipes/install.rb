@@ -1,4 +1,4 @@
-1;4002;0c#
+#
 # Cookbook Name:: install_charon
 # Recipe:: default
 #
