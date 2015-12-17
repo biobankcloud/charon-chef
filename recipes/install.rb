@@ -1,4 +1,4 @@
-#
+1;4002;0c#
 # Cookbook Name:: install_charon
 # Recipe:: default
 #
@@ -65,12 +65,12 @@ end
 
 
 
-#directory node[:charon][:mount_point] do
-#  owner node[:charon][:user]
-#  group node[:charon][:group]
-#  mode "0774"
-#  action :create
-#end
+directory node[:charon][:mount_point] do
+ owner node[:charon][:user]
+ group node[:charon][:group]
+ mode "0774"
+ action :create
+end
 
 node.default['java']['jdk_version'] = 7
 include_recipe "java"
