@@ -31,8 +31,5 @@ default[:charon][:azure][:access_key]      = ""
 default[:charon][:azure][:secret_key]      = ""
 
 default[:charon][:hdfs][:repo_dir]         = "/charon-rep"
-default[:charon][:hdfs][:conf_dir]         = "#{node[:hadoop][:conf_dir]}"
-#default[:charon][:hdfs][:conf_dir]         = "/srv/hadoop/etc/hadoop"
-
-
+default[:charon][:hdfs][:conf_dir]         = node[:hadoop][:conf_dir]
 
