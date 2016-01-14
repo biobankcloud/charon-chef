@@ -229,8 +229,8 @@ end
 
 
 bash "config_fuse_conf" do
-  user node[:charon][:user]
-#  user "root"
+  #user node[:charon][:user]
+  user "root"
   #cwd "#{node[:charon][:home]}"
   code <<-EOH
   perl -p -i -e 's|#user_allow_other|user_allow_other|g;' /etc/fuse.conf
