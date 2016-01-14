@@ -7,3 +7,5 @@ bash "run_Charon" do
     nohup ./Charon_mount.sh > #{node[:charon][:logs_dir]}/log &
     EOH
 end
+
+

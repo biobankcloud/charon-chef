@@ -128,7 +128,7 @@ bash 'extract-charon' do
 end
 
 #link "#{node[:charon][:dir]}/charon" do
- # owner node[:charon][:user]
+   # owner node[:charon][:user]
  # group node[:charon][:group]
  # to node[:charon][:home]
 #end
