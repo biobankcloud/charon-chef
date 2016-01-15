@@ -30,8 +30,8 @@ group node[:charon][:group] do
 end
 
 user node[:charon][:user] do
-#  supports :manage_home => true
-#  home "/home/#{node[:charon][:user]}"
+  supports :manage_home => true
+  home "/home/#{node[:charon][:user]}"
   system true
   shell "/bin/bash"
   not_if "getent passwd #{node[:charon][:user]}"
