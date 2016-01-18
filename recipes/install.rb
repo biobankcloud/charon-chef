@@ -149,13 +149,21 @@ node_ip = node['ipaddress']
 r = Random.new
 random_id=r.rand(0..65635)
 
+
+site_id_name = node[:charon][:site_id_name]
+
+if site_id_name.eql? ""
+  site_id_name = node['hostname']
+end
+
 template "#{node[:charon][:home]}/config/charon.config" do
   source "charon.config.erb"
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
   variables({ :my_ip => node_ip ,
-              :id => random_id
+              :id => random_id,
+              :site_id_name => site_id_name
            })
 end
 
@@ -175,12 +183,6 @@ template "#{node[:charon][:home]}/config/singleCloud.config" do
 end
 
 
-site_id = node[:charon][:site_id_name]
-
-if site_id.eql? ""
-  site_id = node['hostname']
-end
-
 template "#{node[:charon][:home]}/config/site-id.charon" do
   source "site-id.charon.erb"
   owner node[:charon][:user]
@@ -188,7 +190,7 @@ template "#{node[:charon][:home]}/config/site-id.charon" do
   mode 0655
   variables({ :my_ip => node_ip ,
             :id => random_id,
-            :site_id => site_id
+            :site_id_name => site_id_name
          })
 end
 
