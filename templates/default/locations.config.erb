@@ -3,17 +3,9 @@
 
 DEFAULT_LOCATION=<%= node[:charon][:locations][:default_location] %>
 
-<% if node[:charon][:locations][:use_coc].eql? "true" -%>
-coc=coc{file:config/depsky.config}
-<% else %>
-#coc=coc{file:config/depsky.config}
-<% end -%>
+<%= @coc %>
 
-<% if node[:charon][:locations][:use_cloud].eql? "true" -%>
-cloud=cloud{file:config/singleCloud.config}
-<% else %>
-#cloud=cloud{file:config/singleCloud.config}
-<% end -%>
+<%= @cloud %>
 
 local=privateRep{cache_{CLIENT_ID}/privateRep}
 

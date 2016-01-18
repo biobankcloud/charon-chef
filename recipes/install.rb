@@ -200,15 +200,19 @@ template "#{node[:charon][:home]}/config/hopsfsRep.config" do
   mode 0655
 end
 
-use_coc = node[:charon][:locations][:use_coc] 
-use_cloud = node[:charon][:locations][:use_cloud]
+coc = "#coc{file:config/depsky.config}"
+cloud = "#cloud=cloud{file:config/singleCloud.config}"
 
-if node[:charon][:locations][:default_location] == "coc"
-  use_coc = true
+if node[:charon][:locations][:use_coc].eql? "true"
+  coc= "coc{file:config/depsky.config}"
+end
+
+if node[:charon][:locations][:use_cloud].eql? "true"
+  cloud = "cloud=cloud{file:config/singleCloud.config}"
 end
 
 if node[:charon][:locations][:default_location] == "cloud"
-  use_cloud = true
+  cloud = "cloud=cloud{file:config/singleCloud.config}"
 end
 
 template "#{node[:charon][:home]}/config/locations.config" do
@@ -216,8 +220,8 @@ template "#{node[:charon][:home]}/config/locations.config" do
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
-    variables({ :use_coc => use_coc ,
- 	      :use_cloud => use_cloud
+    variables({ :coc => coc ,
+ 	      :cloud => cloud
          })
 end
 
