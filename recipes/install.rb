@@ -174,13 +174,21 @@ template "#{node[:charon][:home]}/config/singleCloud.config" do
   mode 0655
 end
 
+
+site_id = node[:charon][:site_id_name]
+
+if site_id.eql? ""
+  site_id = node['hostname']
+end
+
 template "#{node[:charon][:home]}/config/site-id.charon" do
   source "site-id.charon.erb"
   owner node[:charon][:user]
   group node[:charon][:group]
   mode 0655
   variables({ :my_ip => node_ip ,
-            :id => random_id
+            :id => random_id,
+            :site_id => site_id
          })
 end
 
